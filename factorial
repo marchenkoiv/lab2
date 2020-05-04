@@ -1,0 +1,10 @@
+INT n := 5
+INT x := 1
+INT k := 0
+WHILE GT k n DO
+( INT i := 0
+ INT a := x
+ WHILE LT i k DO
+  (x := INC x a
+  i := INC i 1)
+ k := INC k 1)

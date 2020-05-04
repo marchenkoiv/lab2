@@ -1,0 +1,132 @@
+import ply.lex as lex
+import sys
+
+
+reserved = {
+    'TRUE': 'TRUE',
+    'FALSE': 'FALSE',
+    'INT': 'INT',
+    'BOOLEAN': 'BOOLEAN',
+    'CINT': 'CINT',
+    'CBOOLEAN': 'CBOOLEAN',
+    'MAP': 'MAP',
+    'INC': 'INC',
+    'DEC': 'DEC',
+    'NOT': 'NOT',
+    'GT': 'GT',
+    'LT': 'LT',
+    'WHILE': 'WHILE',
+    'DO': 'DO',
+    'IF': 'IF',
+    'ELSE': 'ELSE',
+    'PROC': 'PROC',
+
+    'STEP': 'STEP',
+    'BACK': 'BACK',
+    'RIGHT': 'RIGHT',
+    'LEFT': 'LEFT',
+    'LOOK': 'LOOK',
+    'BAR': 'BAR',
+    'EMP': 'EMP',
+    'SET': 'SET',
+    'RESET': 'RESET',
+    'CLR': 'CLR',
+}
+
+
+tokens = [
+             'NAME', 'NUMBER', 'EQUALS', 'LPAREN', 'RPAREN', 'INCORRECT'
+         ]
+
+tokens += reserved.values()
+
+t_EQUALS = r'\:\='
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
+
+t_ignore = " \t"
+
+"""
+def t_INT(t):
+    r'(?i)(int)'
+    return t
+    
+def t_CINT(t):
+    r'(?i)(cint)'
+    return t
+    
+def t_BOOLEAN(t):
+    r'(?i)(boolean)'
+    return t
+    
+def t_CBOOLEAN(t):
+    r'(?i)(cboolean)'
+    return t
+    
+def t_TRUE(t):
+    r'(?i)(true)'
+    return t
+    
+def t_FALSE(t):
+    r'(?i)(false)'
+    return t
+    
+def t_MAP(t):
+    r'(?i)(map)'
+    return t
+    
+def t_INC(t):
+    r'(?i)(inc)'
+    return t
+    
+def t_DEC(t):
+    r'(?i)(dec)'
+    return t
+"""
+def t_NUMBER(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
+
+
+def t_NAME(t):
+    r'[a-zA-Z][a-zA-Z0-9]*'
+    t.type = reserved.get(t.value, 'NAME')
+    return t
+
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += t.value.count("\n")
+
+def t_INCORRECT(t):
+    r'[^(a-zA-Z0-9\:\=\)\()]'
+    sys.stderr.write(f'string "{t.lexer.lexdata}" in line {t.lexer.lineno} has incorrect symbol "{t.value}" \n')
+    t.lexer.skip(1)
+
+def t_error(t):
+    # print("Illegal character '%s'" % t.value[0])
+    sys.stderr.write(f'{t.lexer.lexdata} is incorrect\n')
+    t.lexer.skip(1)
+
+
+lexer = lex.lex()
+
+
+try:
+    file = open('C:/Users/user/PycharmProjects/lab2/factorial', 'r')
+except IOError as e:
+    print(u'file is not exist')
+else:
+    while True:
+        line = file.readline()
+        if not line:
+            break
+        lexer.input(line)
+        while True:
+            tok = lexer.token()
+            if not tok:
+                break
+            print(tok)
+    file.close()
+
