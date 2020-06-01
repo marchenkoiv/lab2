@@ -1,9 +1,10 @@
 class node(object):
     # object constructor
-    def __init__(self, t='const', val=None,  ch=None):
+    def __init__(self, t='const', val=None,  ch=None, no=None):
         self.type = t
         self.value = val
         self.child = ch or []
+        self.lineno = no
 
     # object representation
     def __repr__(self):
