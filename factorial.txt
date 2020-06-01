@@ -1,22 +1,14 @@
-PROC HI a
-( a := INC a 1
-a := DEC a 1 )
 
-int INT := 5
-INT x :=
-INT @k := 0
- WHILE GT INC k 0 INC n 0 DO
-(INT i := 0
- INT a := x
- WHILE LT INC i 0 INC k 0 DO
- ( x := a
+int n := 6
+INT x := 1
+INT k := 0
+INT i := 0
+INT a := 0
+ while LT k n do
+(i := 0
+ a := x
+ WHILE LT i k DO
+ ( x := INC X a
   i := INC i 1)
- HI a
- HO D
- STEP
- RIGHT
- LOOK
- SET G 4 5
  k := INC k 1)
-
 

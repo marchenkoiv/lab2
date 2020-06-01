@@ -1,0 +1,3666 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    INCORRECT
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements
+Rule 2     statements_group -> LPAREN statements inner_statement RPAREN
+Rule 3     statements_group -> inner_statement
+Rule 4     inner_statement -> declaration
+Rule 5     inner_statement -> assignment
+Rule 6     inner_statement -> while
+Rule 7     inner_statement -> if
+Rule 8     inner_statement -> command
+Rule 9     inner_statement -> procedure
+Rule 10    inner_statement -> call
+Rule 11    inner_statement -> empty
+Rule 12    inner_statement -> cell_proc
+Rule 13    inner_statement -> arithmetic_expression
+Rule 14    statements -> statements statement
+Rule 15    statements -> statement
+Rule 16    statement -> declaration NEWLINE
+Rule 17    statement -> assignment NEWLINE
+Rule 18    statement -> while NEWLINE
+Rule 19    statement -> if NEWLINE
+Rule 20    statement -> command NEWLINE
+Rule 21    statement -> procedure NEWLINE
+Rule 22    statement -> call NEWLINE
+Rule 23    statement -> empty NEWLINE
+Rule 24    statement -> cell_proc NEWLINE
+Rule 25    statement -> arithmetic_expression NEWLINE
+Rule 26    declaration -> type name EQUALS expression
+Rule 27    declaration -> MAP name
+Rule 28    declaration -> type error
+Rule 29    type -> INT
+Rule 30    type -> CINT
+Rule 31    type -> BOOLEAN
+Rule 32    type -> CBOOLEAN
+Rule 33    assignment -> name EQUALS expression
+Rule 34    assignment -> name EQUALS error
+Rule 35    name -> NAME
+Rule 36    number -> NUMBER
+Rule 37    expression -> name
+Rule 38    expression -> const
+Rule 39    expression -> number
+Rule 40    expression -> logic_expression
+Rule 41    expression -> arithmetic_expression
+Rule 42    expression -> command
+Rule 43    const -> TRUE
+Rule 44    const -> FALSE
+Rule 45    logic_expression -> LT expression expression
+Rule 46    logic_expression -> GT expression expression
+Rule 47    logic_expression -> NOT expression
+Rule 48    logic_expression -> NOT call
+Rule 49    logic_expression -> OR or_arg or_arg
+Rule 50    arithmetic_expression -> INC first_ar second_ar
+Rule 51    arithmetic_expression -> DEC first_ar second_ar
+Rule 52    first_ar -> name
+Rule 53    first_ar -> arithmetic_expression
+Rule 54    first_ar -> call
+Rule 55    second_ar -> name
+Rule 56    second_ar -> arithmetic_expression
+Rule 57    second_ar -> call
+Rule 58    second_ar -> number
+Rule 59    second_ar -> logic_expression
+Rule 60    second_ar -> const
+Rule 61    or_arg -> call
+Rule 62    or_arg -> logic_expression
+Rule 63    or_arg -> TRUE
+Rule 64    or_arg -> FALSE
+Rule 65    while -> WHILE logic_expression DO NEWLINE statements_group
+Rule 66    while -> DO error
+Rule 67    while -> WHILE error
+Rule 68    if -> IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+Rule 69    if -> IF error
+Rule 70    procedure -> PROC NAME LBR parameters RBR NEWLINE statements_group
+Rule 71    procedure -> PROC error
+Rule 72    command -> command error
+Rule 73    command -> LEFT
+Rule 74    command -> RIGHT
+Rule 75    command -> BACK
+Rule 76    command -> STEP
+Rule 77    command -> LOOK
+Rule 78    call -> NAME LBR parameters RBR
+Rule 79    cell_proc -> BAR LBR cell_arg RBR
+Rule 80    cell_proc -> EMP LBR cell_arg RBR
+Rule 81    cell_proc -> SET LBR cell_arg RBR
+Rule 82    cell_proc -> RESET LBR cell_arg RBR
+Rule 83    cell_proc -> CLR LBR cell_arg RBR
+Rule 84    cell_arg -> name name number number
+Rule 85    cell_proc -> BAR error
+Rule 86    cell_proc -> EMP error
+Rule 87    cell_proc -> SET error
+Rule 88    cell_proc -> RESET error
+Rule 89    cell_proc -> CLR error
+Rule 90    call -> NAME error
+Rule 91    empty -> <empty>
+Rule 92    parameters -> parameters name
+Rule 93    parameters -> name
+
+Terminals, with rules where they appear
+
+BACK                 : 75
+BAR                  : 79 85
+BOOLEAN              : 31
+CBOOLEAN             : 32
+CINT                 : 30
+CLR                  : 83 89
+DEC                  : 51
+DO                   : 65 66
+ELSE                 : 68
+EMP                  : 80 86
+EQUALS               : 26 33 34
+FALSE                : 44 64
+GT                   : 46
+IF                   : 68 69
+INC                  : 50
+INCORRECT            : 
+INT                  : 29
+LBR                  : 70 78 79 80 81 82 83
+LEFT                 : 73
+LOOK                 : 77
+LPAREN               : 2
+LT                   : 45
+MAP                  : 27
+NAME                 : 35 70 78 90
+NEWLINE              : 16 17 18 19 20 21 22 23 24 25 65 68 68 70
+NOT                  : 47 48
+NUMBER               : 36
+OR                   : 49
+PROC                 : 70 71
+RBR                  : 70 78 79 80 81 82 83
+RESET                : 82 88
+RIGHT                : 74
+RPAREN               : 2
+SET                  : 81 87
+STEP                 : 76
+TRUE                 : 43 63
+WHILE                : 65 67
+error                : 28 34 66 67 69 71 72 85 86 87 88 89 90
+
+Nonterminals, with rules where they appear
+
+arithmetic_expression : 13 25 41 53 56
+assignment           : 5 17
+call                 : 10 22 48 54 57 61
+cell_arg             : 79 80 81 82 83
+cell_proc            : 12 24
+command              : 8 20 42 72
+const                : 38 60
+declaration          : 4 16
+empty                : 11 23
+expression           : 26 33 45 45 46 46 47
+first_ar             : 50 51
+if                   : 7 19
+inner_statement      : 2 3
+logic_expression     : 40 59 62 65 68
+name                 : 26 27 33 34 37 52 55 84 84 92 93
+number               : 39 58 84 84
+or_arg               : 49 49
+parameters           : 70 78 92
+procedure            : 9 21
+program              : 0
+second_ar            : 50 51
+statement            : 14 15
+statements           : 1 2 14
+statements_group     : 65 68 68 70
+type                 : 26 28
+while                : 6 18
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statements
+    (14) statements -> . statements statement
+    (15) statements -> . statement
+    (16) statement -> . declaration NEWLINE
+    (17) statement -> . assignment NEWLINE
+    (18) statement -> . while NEWLINE
+    (19) statement -> . if NEWLINE
+    (20) statement -> . command NEWLINE
+    (21) statement -> . procedure NEWLINE
+    (22) statement -> . call NEWLINE
+    (23) statement -> . empty NEWLINE
+    (24) statement -> . cell_proc NEWLINE
+    (25) statement -> . arithmetic_expression NEWLINE
+    (26) declaration -> . type name EQUALS expression
+    (27) declaration -> . MAP name
+    (28) declaration -> . type error
+    (33) assignment -> . name EQUALS expression
+    (34) assignment -> . name EQUALS error
+    (65) while -> . WHILE logic_expression DO NEWLINE statements_group
+    (66) while -> . DO error
+    (67) while -> . WHILE error
+    (68) if -> . IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+    (69) if -> . IF error
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+    (70) procedure -> . PROC NAME LBR parameters RBR NEWLINE statements_group
+    (71) procedure -> . PROC error
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (91) empty -> .
+    (79) cell_proc -> . BAR LBR cell_arg RBR
+    (80) cell_proc -> . EMP LBR cell_arg RBR
+    (81) cell_proc -> . SET LBR cell_arg RBR
+    (82) cell_proc -> . RESET LBR cell_arg RBR
+    (83) cell_proc -> . CLR LBR cell_arg RBR
+    (85) cell_proc -> . BAR error
+    (86) cell_proc -> . EMP error
+    (87) cell_proc -> . SET error
+    (88) cell_proc -> . RESET error
+    (89) cell_proc -> . CLR error
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (29) type -> . INT
+    (30) type -> . CINT
+    (31) type -> . BOOLEAN
+    (32) type -> . CBOOLEAN
+    (35) name -> . NAME
+
+    MAP             shift and go to state 16
+    WHILE           shift and go to state 17
+    DO              shift and go to state 18
+    IF              shift and go to state 19
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+    PROC            shift and go to state 25
+    NAME            shift and go to state 26
+    NEWLINE         reduce using rule 91 (empty -> .)
+    BAR             shift and go to state 27
+    EMP             shift and go to state 28
+    SET             shift and go to state 29
+    RESET           shift and go to state 30
+    CLR             shift and go to state 31
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    INT             shift and go to state 34
+    CINT            shift and go to state 35
+    BOOLEAN         shift and go to state 36
+    CBOOLEAN        shift and go to state 37
+
+    program                        shift and go to state 1
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    while                          shift and go to state 6
+    if                             shift and go to state 7
+    command                        shift and go to state 8
+    procedure                      shift and go to state 9
+    call                           shift and go to state 10
+    empty                          shift and go to state 11
+    cell_proc                      shift and go to state 12
+    arithmetic_expression          shift and go to state 13
+    type                           shift and go to state 14
+    name                           shift and go to state 15
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statements .
+    (14) statements -> statements . statement
+    (16) statement -> . declaration NEWLINE
+    (17) statement -> . assignment NEWLINE
+    (18) statement -> . while NEWLINE
+    (19) statement -> . if NEWLINE
+    (20) statement -> . command NEWLINE
+    (21) statement -> . procedure NEWLINE
+    (22) statement -> . call NEWLINE
+    (23) statement -> . empty NEWLINE
+    (24) statement -> . cell_proc NEWLINE
+    (25) statement -> . arithmetic_expression NEWLINE
+    (26) declaration -> . type name EQUALS expression
+    (27) declaration -> . MAP name
+    (28) declaration -> . type error
+    (33) assignment -> . name EQUALS expression
+    (34) assignment -> . name EQUALS error
+    (65) while -> . WHILE logic_expression DO NEWLINE statements_group
+    (66) while -> . DO error
+    (67) while -> . WHILE error
+    (68) if -> . IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+    (69) if -> . IF error
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+    (70) procedure -> . PROC NAME LBR parameters RBR NEWLINE statements_group
+    (71) procedure -> . PROC error
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (91) empty -> .
+    (79) cell_proc -> . BAR LBR cell_arg RBR
+    (80) cell_proc -> . EMP LBR cell_arg RBR
+    (81) cell_proc -> . SET LBR cell_arg RBR
+    (82) cell_proc -> . RESET LBR cell_arg RBR
+    (83) cell_proc -> . CLR LBR cell_arg RBR
+    (85) cell_proc -> . BAR error
+    (86) cell_proc -> . EMP error
+    (87) cell_proc -> . SET error
+    (88) cell_proc -> . RESET error
+    (89) cell_proc -> . CLR error
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (29) type -> . INT
+    (30) type -> . CINT
+    (31) type -> . BOOLEAN
+    (32) type -> . CBOOLEAN
+    (35) name -> . NAME
+
+    $end            reduce using rule 1 (program -> statements .)
+    MAP             shift and go to state 16
+    WHILE           shift and go to state 17
+    DO              shift and go to state 18
+    IF              shift and go to state 19
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+    PROC            shift and go to state 25
+    NAME            shift and go to state 26
+    NEWLINE         reduce using rule 91 (empty -> .)
+    BAR             shift and go to state 27
+    EMP             shift and go to state 28
+    SET             shift and go to state 29
+    RESET           shift and go to state 30
+    CLR             shift and go to state 31
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    INT             shift and go to state 34
+    CINT            shift and go to state 35
+    BOOLEAN         shift and go to state 36
+    CBOOLEAN        shift and go to state 37
+
+    statement                      shift and go to state 38
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    while                          shift and go to state 6
+    if                             shift and go to state 7
+    command                        shift and go to state 8
+    procedure                      shift and go to state 9
+    call                           shift and go to state 10
+    empty                          shift and go to state 11
+    cell_proc                      shift and go to state 12
+    arithmetic_expression          shift and go to state 13
+    type                           shift and go to state 14
+    name                           shift and go to state 15
+
+state 3
+
+    (15) statements -> statement .
+
+    MAP             reduce using rule 15 (statements -> statement .)
+    WHILE           reduce using rule 15 (statements -> statement .)
+    DO              reduce using rule 15 (statements -> statement .)
+    IF              reduce using rule 15 (statements -> statement .)
+    LEFT            reduce using rule 15 (statements -> statement .)
+    RIGHT           reduce using rule 15 (statements -> statement .)
+    BACK            reduce using rule 15 (statements -> statement .)
+    STEP            reduce using rule 15 (statements -> statement .)
+    LOOK            reduce using rule 15 (statements -> statement .)
+    PROC            reduce using rule 15 (statements -> statement .)
+    NAME            reduce using rule 15 (statements -> statement .)
+    BAR             reduce using rule 15 (statements -> statement .)
+    EMP             reduce using rule 15 (statements -> statement .)
+    SET             reduce using rule 15 (statements -> statement .)
+    RESET           reduce using rule 15 (statements -> statement .)
+    CLR             reduce using rule 15 (statements -> statement .)
+    INC             reduce using rule 15 (statements -> statement .)
+    DEC             reduce using rule 15 (statements -> statement .)
+    INT             reduce using rule 15 (statements -> statement .)
+    CINT            reduce using rule 15 (statements -> statement .)
+    BOOLEAN         reduce using rule 15 (statements -> statement .)
+    CBOOLEAN        reduce using rule 15 (statements -> statement .)
+    NEWLINE         reduce using rule 15 (statements -> statement .)
+    $end            reduce using rule 15 (statements -> statement .)
+    RPAREN          reduce using rule 15 (statements -> statement .)
+
+
+state 4
+
+    (16) statement -> declaration . NEWLINE
+
+    NEWLINE         shift and go to state 39
+
+
+state 5
+
+    (17) statement -> assignment . NEWLINE
+
+    NEWLINE         shift and go to state 40
+
+
+state 6
+
+    (18) statement -> while . NEWLINE
+
+    NEWLINE         shift and go to state 41
+
+
+state 7
+
+    (19) statement -> if . NEWLINE
+
+    NEWLINE         shift and go to state 42
+
+
+state 8
+
+    (20) statement -> command . NEWLINE
+    (72) command -> command . error
+
+    NEWLINE         shift and go to state 43
+    error           shift and go to state 44
+
+
+state 9
+
+    (21) statement -> procedure . NEWLINE
+
+    NEWLINE         shift and go to state 45
+
+
+state 10
+
+    (22) statement -> call . NEWLINE
+
+    NEWLINE         shift and go to state 46
+
+
+state 11
+
+    (23) statement -> empty . NEWLINE
+
+    NEWLINE         shift and go to state 47
+
+
+state 12
+
+    (24) statement -> cell_proc . NEWLINE
+
+    NEWLINE         shift and go to state 48
+
+
+state 13
+
+    (25) statement -> arithmetic_expression . NEWLINE
+
+    NEWLINE         shift and go to state 49
+
+
+state 14
+
+    (26) declaration -> type . name EQUALS expression
+    (28) declaration -> type . error
+    (35) name -> . NAME
+
+    error           shift and go to state 51
+    NAME            shift and go to state 52
+
+    name                           shift and go to state 50
+
+state 15
+
+    (33) assignment -> name . EQUALS expression
+    (34) assignment -> name . EQUALS error
+
+    EQUALS          shift and go to state 53
+
+
+state 16
+
+    (27) declaration -> MAP . name
+    (35) name -> . NAME
+
+    NAME            shift and go to state 52
+
+    name                           shift and go to state 54
+
+state 17
+
+    (65) while -> WHILE . logic_expression DO NEWLINE statements_group
+    (67) while -> WHILE . error
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+
+    error           shift and go to state 56
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+
+    logic_expression               shift and go to state 55
+
+state 18
+
+    (66) while -> DO . error
+
+    error           shift and go to state 61
+
+
+state 19
+
+    (68) if -> IF . logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+    (69) if -> IF . error
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+
+    error           shift and go to state 63
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+
+    logic_expression               shift and go to state 62
+
+state 20
+
+    (73) command -> LEFT .
+
+    NEWLINE         reduce using rule 73 (command -> LEFT .)
+    error           reduce using rule 73 (command -> LEFT .)
+    RPAREN          reduce using rule 73 (command -> LEFT .)
+    NAME            reduce using rule 73 (command -> LEFT .)
+    TRUE            reduce using rule 73 (command -> LEFT .)
+    FALSE           reduce using rule 73 (command -> LEFT .)
+    NUMBER          reduce using rule 73 (command -> LEFT .)
+    LT              reduce using rule 73 (command -> LEFT .)
+    GT              reduce using rule 73 (command -> LEFT .)
+    NOT             reduce using rule 73 (command -> LEFT .)
+    OR              reduce using rule 73 (command -> LEFT .)
+    INC             reduce using rule 73 (command -> LEFT .)
+    DEC             reduce using rule 73 (command -> LEFT .)
+    LEFT            reduce using rule 73 (command -> LEFT .)
+    RIGHT           reduce using rule 73 (command -> LEFT .)
+    BACK            reduce using rule 73 (command -> LEFT .)
+    STEP            reduce using rule 73 (command -> LEFT .)
+    LOOK            reduce using rule 73 (command -> LEFT .)
+    DO              reduce using rule 73 (command -> LEFT .)
+
+
+state 21
+
+    (74) command -> RIGHT .
+
+    NEWLINE         reduce using rule 74 (command -> RIGHT .)
+    error           reduce using rule 74 (command -> RIGHT .)
+    RPAREN          reduce using rule 74 (command -> RIGHT .)
+    NAME            reduce using rule 74 (command -> RIGHT .)
+    TRUE            reduce using rule 74 (command -> RIGHT .)
+    FALSE           reduce using rule 74 (command -> RIGHT .)
+    NUMBER          reduce using rule 74 (command -> RIGHT .)
+    LT              reduce using rule 74 (command -> RIGHT .)
+    GT              reduce using rule 74 (command -> RIGHT .)
+    NOT             reduce using rule 74 (command -> RIGHT .)
+    OR              reduce using rule 74 (command -> RIGHT .)
+    INC             reduce using rule 74 (command -> RIGHT .)
+    DEC             reduce using rule 74 (command -> RIGHT .)
+    LEFT            reduce using rule 74 (command -> RIGHT .)
+    RIGHT           reduce using rule 74 (command -> RIGHT .)
+    BACK            reduce using rule 74 (command -> RIGHT .)
+    STEP            reduce using rule 74 (command -> RIGHT .)
+    LOOK            reduce using rule 74 (command -> RIGHT .)
+    DO              reduce using rule 74 (command -> RIGHT .)
+
+
+state 22
+
+    (75) command -> BACK .
+
+    NEWLINE         reduce using rule 75 (command -> BACK .)
+    error           reduce using rule 75 (command -> BACK .)
+    RPAREN          reduce using rule 75 (command -> BACK .)
+    NAME            reduce using rule 75 (command -> BACK .)
+    TRUE            reduce using rule 75 (command -> BACK .)
+    FALSE           reduce using rule 75 (command -> BACK .)
+    NUMBER          reduce using rule 75 (command -> BACK .)
+    LT              reduce using rule 75 (command -> BACK .)
+    GT              reduce using rule 75 (command -> BACK .)
+    NOT             reduce using rule 75 (command -> BACK .)
+    OR              reduce using rule 75 (command -> BACK .)
+    INC             reduce using rule 75 (command -> BACK .)
+    DEC             reduce using rule 75 (command -> BACK .)
+    LEFT            reduce using rule 75 (command -> BACK .)
+    RIGHT           reduce using rule 75 (command -> BACK .)
+    BACK            reduce using rule 75 (command -> BACK .)
+    STEP            reduce using rule 75 (command -> BACK .)
+    LOOK            reduce using rule 75 (command -> BACK .)
+    DO              reduce using rule 75 (command -> BACK .)
+
+
+state 23
+
+    (76) command -> STEP .
+
+    NEWLINE         reduce using rule 76 (command -> STEP .)
+    error           reduce using rule 76 (command -> STEP .)
+    RPAREN          reduce using rule 76 (command -> STEP .)
+    NAME            reduce using rule 76 (command -> STEP .)
+    TRUE            reduce using rule 76 (command -> STEP .)
+    FALSE           reduce using rule 76 (command -> STEP .)
+    NUMBER          reduce using rule 76 (command -> STEP .)
+    LT              reduce using rule 76 (command -> STEP .)
+    GT              reduce using rule 76 (command -> STEP .)
+    NOT             reduce using rule 76 (command -> STEP .)
+    OR              reduce using rule 76 (command -> STEP .)
+    INC             reduce using rule 76 (command -> STEP .)
+    DEC             reduce using rule 76 (command -> STEP .)
+    LEFT            reduce using rule 76 (command -> STEP .)
+    RIGHT           reduce using rule 76 (command -> STEP .)
+    BACK            reduce using rule 76 (command -> STEP .)
+    STEP            reduce using rule 76 (command -> STEP .)
+    LOOK            reduce using rule 76 (command -> STEP .)
+    DO              reduce using rule 76 (command -> STEP .)
+
+
+state 24
+
+    (77) command -> LOOK .
+
+    NEWLINE         reduce using rule 77 (command -> LOOK .)
+    error           reduce using rule 77 (command -> LOOK .)
+    RPAREN          reduce using rule 77 (command -> LOOK .)
+    NAME            reduce using rule 77 (command -> LOOK .)
+    TRUE            reduce using rule 77 (command -> LOOK .)
+    FALSE           reduce using rule 77 (command -> LOOK .)
+    NUMBER          reduce using rule 77 (command -> LOOK .)
+    LT              reduce using rule 77 (command -> LOOK .)
+    GT              reduce using rule 77 (command -> LOOK .)
+    NOT             reduce using rule 77 (command -> LOOK .)
+    OR              reduce using rule 77 (command -> LOOK .)
+    INC             reduce using rule 77 (command -> LOOK .)
+    DEC             reduce using rule 77 (command -> LOOK .)
+    LEFT            reduce using rule 77 (command -> LOOK .)
+    RIGHT           reduce using rule 77 (command -> LOOK .)
+    BACK            reduce using rule 77 (command -> LOOK .)
+    STEP            reduce using rule 77 (command -> LOOK .)
+    LOOK            reduce using rule 77 (command -> LOOK .)
+    DO              reduce using rule 77 (command -> LOOK .)
+
+
+state 25
+
+    (70) procedure -> PROC . NAME LBR parameters RBR NEWLINE statements_group
+    (71) procedure -> PROC . error
+
+    NAME            shift and go to state 64
+    error           shift and go to state 65
+
+
+state 26
+
+    (78) call -> NAME . LBR parameters RBR
+    (90) call -> NAME . error
+    (35) name -> NAME .
+
+    LBR             shift and go to state 66
+    error           shift and go to state 67
+    EQUALS          reduce using rule 35 (name -> NAME .)
+    DO              reduce using rule 35 (name -> NAME .)
+    NEWLINE         reduce using rule 35 (name -> NAME .)
+    RPAREN          reduce using rule 35 (name -> NAME .)
+    NAME            reduce using rule 35 (name -> NAME .)
+    TRUE            reduce using rule 35 (name -> NAME .)
+    FALSE           reduce using rule 35 (name -> NAME .)
+    NUMBER          reduce using rule 35 (name -> NAME .)
+    LT              reduce using rule 35 (name -> NAME .)
+    GT              reduce using rule 35 (name -> NAME .)
+    NOT             reduce using rule 35 (name -> NAME .)
+    OR              reduce using rule 35 (name -> NAME .)
+    INC             reduce using rule 35 (name -> NAME .)
+    DEC             reduce using rule 35 (name -> NAME .)
+    LEFT            reduce using rule 35 (name -> NAME .)
+    RIGHT           reduce using rule 35 (name -> NAME .)
+    BACK            reduce using rule 35 (name -> NAME .)
+    STEP            reduce using rule 35 (name -> NAME .)
+    LOOK            reduce using rule 35 (name -> NAME .)
+
+
+state 27
+
+    (79) cell_proc -> BAR . LBR cell_arg RBR
+    (85) cell_proc -> BAR . error
+
+    LBR             shift and go to state 68
+    error           shift and go to state 69
+
+
+state 28
+
+    (80) cell_proc -> EMP . LBR cell_arg RBR
+    (86) cell_proc -> EMP . error
+
+    LBR             shift and go to state 70
+    error           shift and go to state 71
+
+
+state 29
+
+    (81) cell_proc -> SET . LBR cell_arg RBR
+    (87) cell_proc -> SET . error
+
+    LBR             shift and go to state 72
+    error           shift and go to state 73
+
+
+state 30
+
+    (82) cell_proc -> RESET . LBR cell_arg RBR
+    (88) cell_proc -> RESET . error
+
+    LBR             shift and go to state 74
+    error           shift and go to state 75
+
+
+state 31
+
+    (83) cell_proc -> CLR . LBR cell_arg RBR
+    (89) cell_proc -> CLR . error
+
+    LBR             shift and go to state 76
+    error           shift and go to state 77
+
+
+state 32
+
+    (50) arithmetic_expression -> INC . first_ar second_ar
+    (52) first_ar -> . name
+    (53) first_ar -> . arithmetic_expression
+    (54) first_ar -> . call
+    (35) name -> . NAME
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+
+    NAME            shift and go to state 82
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+
+    first_ar                       shift and go to state 78
+    name                           shift and go to state 79
+    arithmetic_expression          shift and go to state 80
+    call                           shift and go to state 81
+
+state 33
+
+    (51) arithmetic_expression -> DEC . first_ar second_ar
+    (52) first_ar -> . name
+    (53) first_ar -> . arithmetic_expression
+    (54) first_ar -> . call
+    (35) name -> . NAME
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+
+    NAME            shift and go to state 82
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+
+    first_ar                       shift and go to state 83
+    name                           shift and go to state 79
+    arithmetic_expression          shift and go to state 80
+    call                           shift and go to state 81
+
+state 34
+
+    (29) type -> INT .
+
+    error           reduce using rule 29 (type -> INT .)
+    NAME            reduce using rule 29 (type -> INT .)
+
+
+state 35
+
+    (30) type -> CINT .
+
+    error           reduce using rule 30 (type -> CINT .)
+    NAME            reduce using rule 30 (type -> CINT .)
+
+
+state 36
+
+    (31) type -> BOOLEAN .
+
+    error           reduce using rule 31 (type -> BOOLEAN .)
+    NAME            reduce using rule 31 (type -> BOOLEAN .)
+
+
+state 37
+
+    (32) type -> CBOOLEAN .
+
+    error           reduce using rule 32 (type -> CBOOLEAN .)
+    NAME            reduce using rule 32 (type -> CBOOLEAN .)
+
+
+state 38
+
+    (14) statements -> statements statement .
+
+    MAP             reduce using rule 14 (statements -> statements statement .)
+    WHILE           reduce using rule 14 (statements -> statements statement .)
+    DO              reduce using rule 14 (statements -> statements statement .)
+    IF              reduce using rule 14 (statements -> statements statement .)
+    LEFT            reduce using rule 14 (statements -> statements statement .)
+    RIGHT           reduce using rule 14 (statements -> statements statement .)
+    BACK            reduce using rule 14 (statements -> statements statement .)
+    STEP            reduce using rule 14 (statements -> statements statement .)
+    LOOK            reduce using rule 14 (statements -> statements statement .)
+    PROC            reduce using rule 14 (statements -> statements statement .)
+    NAME            reduce using rule 14 (statements -> statements statement .)
+    BAR             reduce using rule 14 (statements -> statements statement .)
+    EMP             reduce using rule 14 (statements -> statements statement .)
+    SET             reduce using rule 14 (statements -> statements statement .)
+    RESET           reduce using rule 14 (statements -> statements statement .)
+    CLR             reduce using rule 14 (statements -> statements statement .)
+    INC             reduce using rule 14 (statements -> statements statement .)
+    DEC             reduce using rule 14 (statements -> statements statement .)
+    INT             reduce using rule 14 (statements -> statements statement .)
+    CINT            reduce using rule 14 (statements -> statements statement .)
+    BOOLEAN         reduce using rule 14 (statements -> statements statement .)
+    CBOOLEAN        reduce using rule 14 (statements -> statements statement .)
+    NEWLINE         reduce using rule 14 (statements -> statements statement .)
+    $end            reduce using rule 14 (statements -> statements statement .)
+    RPAREN          reduce using rule 14 (statements -> statements statement .)
+
+
+state 39
+
+    (16) statement -> declaration NEWLINE .
+
+    MAP             reduce using rule 16 (statement -> declaration NEWLINE .)
+    WHILE           reduce using rule 16 (statement -> declaration NEWLINE .)
+    DO              reduce using rule 16 (statement -> declaration NEWLINE .)
+    IF              reduce using rule 16 (statement -> declaration NEWLINE .)
+    LEFT            reduce using rule 16 (statement -> declaration NEWLINE .)
+    RIGHT           reduce using rule 16 (statement -> declaration NEWLINE .)
+    BACK            reduce using rule 16 (statement -> declaration NEWLINE .)
+    STEP            reduce using rule 16 (statement -> declaration NEWLINE .)
+    LOOK            reduce using rule 16 (statement -> declaration NEWLINE .)
+    PROC            reduce using rule 16 (statement -> declaration NEWLINE .)
+    NAME            reduce using rule 16 (statement -> declaration NEWLINE .)
+    BAR             reduce using rule 16 (statement -> declaration NEWLINE .)
+    EMP             reduce using rule 16 (statement -> declaration NEWLINE .)
+    SET             reduce using rule 16 (statement -> declaration NEWLINE .)
+    RESET           reduce using rule 16 (statement -> declaration NEWLINE .)
+    CLR             reduce using rule 16 (statement -> declaration NEWLINE .)
+    INC             reduce using rule 16 (statement -> declaration NEWLINE .)
+    DEC             reduce using rule 16 (statement -> declaration NEWLINE .)
+    INT             reduce using rule 16 (statement -> declaration NEWLINE .)
+    CINT            reduce using rule 16 (statement -> declaration NEWLINE .)
+    BOOLEAN         reduce using rule 16 (statement -> declaration NEWLINE .)
+    CBOOLEAN        reduce using rule 16 (statement -> declaration NEWLINE .)
+    NEWLINE         reduce using rule 16 (statement -> declaration NEWLINE .)
+    $end            reduce using rule 16 (statement -> declaration NEWLINE .)
+    RPAREN          reduce using rule 16 (statement -> declaration NEWLINE .)
+
+
+state 40
+
+    (17) statement -> assignment NEWLINE .
+
+    MAP             reduce using rule 17 (statement -> assignment NEWLINE .)
+    WHILE           reduce using rule 17 (statement -> assignment NEWLINE .)
+    DO              reduce using rule 17 (statement -> assignment NEWLINE .)
+    IF              reduce using rule 17 (statement -> assignment NEWLINE .)
+    LEFT            reduce using rule 17 (statement -> assignment NEWLINE .)
+    RIGHT           reduce using rule 17 (statement -> assignment NEWLINE .)
+    BACK            reduce using rule 17 (statement -> assignment NEWLINE .)
+    STEP            reduce using rule 17 (statement -> assignment NEWLINE .)
+    LOOK            reduce using rule 17 (statement -> assignment NEWLINE .)
+    PROC            reduce using rule 17 (statement -> assignment NEWLINE .)
+    NAME            reduce using rule 17 (statement -> assignment NEWLINE .)
+    BAR             reduce using rule 17 (statement -> assignment NEWLINE .)
+    EMP             reduce using rule 17 (statement -> assignment NEWLINE .)
+    SET             reduce using rule 17 (statement -> assignment NEWLINE .)
+    RESET           reduce using rule 17 (statement -> assignment NEWLINE .)
+    CLR             reduce using rule 17 (statement -> assignment NEWLINE .)
+    INC             reduce using rule 17 (statement -> assignment NEWLINE .)
+    DEC             reduce using rule 17 (statement -> assignment NEWLINE .)
+    INT             reduce using rule 17 (statement -> assignment NEWLINE .)
+    CINT            reduce using rule 17 (statement -> assignment NEWLINE .)
+    BOOLEAN         reduce using rule 17 (statement -> assignment NEWLINE .)
+    CBOOLEAN        reduce using rule 17 (statement -> assignment NEWLINE .)
+    NEWLINE         reduce using rule 17 (statement -> assignment NEWLINE .)
+    $end            reduce using rule 17 (statement -> assignment NEWLINE .)
+    RPAREN          reduce using rule 17 (statement -> assignment NEWLINE .)
+
+
+state 41
+
+    (18) statement -> while NEWLINE .
+
+    MAP             reduce using rule 18 (statement -> while NEWLINE .)
+    WHILE           reduce using rule 18 (statement -> while NEWLINE .)
+    DO              reduce using rule 18 (statement -> while NEWLINE .)
+    IF              reduce using rule 18 (statement -> while NEWLINE .)
+    LEFT            reduce using rule 18 (statement -> while NEWLINE .)
+    RIGHT           reduce using rule 18 (statement -> while NEWLINE .)
+    BACK            reduce using rule 18 (statement -> while NEWLINE .)
+    STEP            reduce using rule 18 (statement -> while NEWLINE .)
+    LOOK            reduce using rule 18 (statement -> while NEWLINE .)
+    PROC            reduce using rule 18 (statement -> while NEWLINE .)
+    NAME            reduce using rule 18 (statement -> while NEWLINE .)
+    BAR             reduce using rule 18 (statement -> while NEWLINE .)
+    EMP             reduce using rule 18 (statement -> while NEWLINE .)
+    SET             reduce using rule 18 (statement -> while NEWLINE .)
+    RESET           reduce using rule 18 (statement -> while NEWLINE .)
+    CLR             reduce using rule 18 (statement -> while NEWLINE .)
+    INC             reduce using rule 18 (statement -> while NEWLINE .)
+    DEC             reduce using rule 18 (statement -> while NEWLINE .)
+    INT             reduce using rule 18 (statement -> while NEWLINE .)
+    CINT            reduce using rule 18 (statement -> while NEWLINE .)
+    BOOLEAN         reduce using rule 18 (statement -> while NEWLINE .)
+    CBOOLEAN        reduce using rule 18 (statement -> while NEWLINE .)
+    NEWLINE         reduce using rule 18 (statement -> while NEWLINE .)
+    $end            reduce using rule 18 (statement -> while NEWLINE .)
+    RPAREN          reduce using rule 18 (statement -> while NEWLINE .)
+
+
+state 42
+
+    (19) statement -> if NEWLINE .
+
+    MAP             reduce using rule 19 (statement -> if NEWLINE .)
+    WHILE           reduce using rule 19 (statement -> if NEWLINE .)
+    DO              reduce using rule 19 (statement -> if NEWLINE .)
+    IF              reduce using rule 19 (statement -> if NEWLINE .)
+    LEFT            reduce using rule 19 (statement -> if NEWLINE .)
+    RIGHT           reduce using rule 19 (statement -> if NEWLINE .)
+    BACK            reduce using rule 19 (statement -> if NEWLINE .)
+    STEP            reduce using rule 19 (statement -> if NEWLINE .)
+    LOOK            reduce using rule 19 (statement -> if NEWLINE .)
+    PROC            reduce using rule 19 (statement -> if NEWLINE .)
+    NAME            reduce using rule 19 (statement -> if NEWLINE .)
+    BAR             reduce using rule 19 (statement -> if NEWLINE .)
+    EMP             reduce using rule 19 (statement -> if NEWLINE .)
+    SET             reduce using rule 19 (statement -> if NEWLINE .)
+    RESET           reduce using rule 19 (statement -> if NEWLINE .)
+    CLR             reduce using rule 19 (statement -> if NEWLINE .)
+    INC             reduce using rule 19 (statement -> if NEWLINE .)
+    DEC             reduce using rule 19 (statement -> if NEWLINE .)
+    INT             reduce using rule 19 (statement -> if NEWLINE .)
+    CINT            reduce using rule 19 (statement -> if NEWLINE .)
+    BOOLEAN         reduce using rule 19 (statement -> if NEWLINE .)
+    CBOOLEAN        reduce using rule 19 (statement -> if NEWLINE .)
+    NEWLINE         reduce using rule 19 (statement -> if NEWLINE .)
+    $end            reduce using rule 19 (statement -> if NEWLINE .)
+    RPAREN          reduce using rule 19 (statement -> if NEWLINE .)
+
+
+state 43
+
+    (20) statement -> command NEWLINE .
+
+    MAP             reduce using rule 20 (statement -> command NEWLINE .)
+    WHILE           reduce using rule 20 (statement -> command NEWLINE .)
+    DO              reduce using rule 20 (statement -> command NEWLINE .)
+    IF              reduce using rule 20 (statement -> command NEWLINE .)
+    LEFT            reduce using rule 20 (statement -> command NEWLINE .)
+    RIGHT           reduce using rule 20 (statement -> command NEWLINE .)
+    BACK            reduce using rule 20 (statement -> command NEWLINE .)
+    STEP            reduce using rule 20 (statement -> command NEWLINE .)
+    LOOK            reduce using rule 20 (statement -> command NEWLINE .)
+    PROC            reduce using rule 20 (statement -> command NEWLINE .)
+    NAME            reduce using rule 20 (statement -> command NEWLINE .)
+    BAR             reduce using rule 20 (statement -> command NEWLINE .)
+    EMP             reduce using rule 20 (statement -> command NEWLINE .)
+    SET             reduce using rule 20 (statement -> command NEWLINE .)
+    RESET           reduce using rule 20 (statement -> command NEWLINE .)
+    CLR             reduce using rule 20 (statement -> command NEWLINE .)
+    INC             reduce using rule 20 (statement -> command NEWLINE .)
+    DEC             reduce using rule 20 (statement -> command NEWLINE .)
+    INT             reduce using rule 20 (statement -> command NEWLINE .)
+    CINT            reduce using rule 20 (statement -> command NEWLINE .)
+    BOOLEAN         reduce using rule 20 (statement -> command NEWLINE .)
+    CBOOLEAN        reduce using rule 20 (statement -> command NEWLINE .)
+    NEWLINE         reduce using rule 20 (statement -> command NEWLINE .)
+    $end            reduce using rule 20 (statement -> command NEWLINE .)
+    RPAREN          reduce using rule 20 (statement -> command NEWLINE .)
+
+
+state 44
+
+    (72) command -> command error .
+
+    NEWLINE         reduce using rule 72 (command -> command error .)
+    error           reduce using rule 72 (command -> command error .)
+    RPAREN          reduce using rule 72 (command -> command error .)
+    NAME            reduce using rule 72 (command -> command error .)
+    TRUE            reduce using rule 72 (command -> command error .)
+    FALSE           reduce using rule 72 (command -> command error .)
+    NUMBER          reduce using rule 72 (command -> command error .)
+    LT              reduce using rule 72 (command -> command error .)
+    GT              reduce using rule 72 (command -> command error .)
+    NOT             reduce using rule 72 (command -> command error .)
+    OR              reduce using rule 72 (command -> command error .)
+    INC             reduce using rule 72 (command -> command error .)
+    DEC             reduce using rule 72 (command -> command error .)
+    LEFT            reduce using rule 72 (command -> command error .)
+    RIGHT           reduce using rule 72 (command -> command error .)
+    BACK            reduce using rule 72 (command -> command error .)
+    STEP            reduce using rule 72 (command -> command error .)
+    LOOK            reduce using rule 72 (command -> command error .)
+    DO              reduce using rule 72 (command -> command error .)
+
+
+state 45
+
+    (21) statement -> procedure NEWLINE .
+
+    MAP             reduce using rule 21 (statement -> procedure NEWLINE .)
+    WHILE           reduce using rule 21 (statement -> procedure NEWLINE .)
+    DO              reduce using rule 21 (statement -> procedure NEWLINE .)
+    IF              reduce using rule 21 (statement -> procedure NEWLINE .)
+    LEFT            reduce using rule 21 (statement -> procedure NEWLINE .)
+    RIGHT           reduce using rule 21 (statement -> procedure NEWLINE .)
+    BACK            reduce using rule 21 (statement -> procedure NEWLINE .)
+    STEP            reduce using rule 21 (statement -> procedure NEWLINE .)
+    LOOK            reduce using rule 21 (statement -> procedure NEWLINE .)
+    PROC            reduce using rule 21 (statement -> procedure NEWLINE .)
+    NAME            reduce using rule 21 (statement -> procedure NEWLINE .)
+    BAR             reduce using rule 21 (statement -> procedure NEWLINE .)
+    EMP             reduce using rule 21 (statement -> procedure NEWLINE .)
+    SET             reduce using rule 21 (statement -> procedure NEWLINE .)
+    RESET           reduce using rule 21 (statement -> procedure NEWLINE .)
+    CLR             reduce using rule 21 (statement -> procedure NEWLINE .)
+    INC             reduce using rule 21 (statement -> procedure NEWLINE .)
+    DEC             reduce using rule 21 (statement -> procedure NEWLINE .)
+    INT             reduce using rule 21 (statement -> procedure NEWLINE .)
+    CINT            reduce using rule 21 (statement -> procedure NEWLINE .)
+    BOOLEAN         reduce using rule 21 (statement -> procedure NEWLINE .)
+    CBOOLEAN        reduce using rule 21 (statement -> procedure NEWLINE .)
+    NEWLINE         reduce using rule 21 (statement -> procedure NEWLINE .)
+    $end            reduce using rule 21 (statement -> procedure NEWLINE .)
+    RPAREN          reduce using rule 21 (statement -> procedure NEWLINE .)
+
+
+state 46
+
+    (22) statement -> call NEWLINE .
+
+    MAP             reduce using rule 22 (statement -> call NEWLINE .)
+    WHILE           reduce using rule 22 (statement -> call NEWLINE .)
+    DO              reduce using rule 22 (statement -> call NEWLINE .)
+    IF              reduce using rule 22 (statement -> call NEWLINE .)
+    LEFT            reduce using rule 22 (statement -> call NEWLINE .)
+    RIGHT           reduce using rule 22 (statement -> call NEWLINE .)
+    BACK            reduce using rule 22 (statement -> call NEWLINE .)
+    STEP            reduce using rule 22 (statement -> call NEWLINE .)
+    LOOK            reduce using rule 22 (statement -> call NEWLINE .)
+    PROC            reduce using rule 22 (statement -> call NEWLINE .)
+    NAME            reduce using rule 22 (statement -> call NEWLINE .)
+    BAR             reduce using rule 22 (statement -> call NEWLINE .)
+    EMP             reduce using rule 22 (statement -> call NEWLINE .)
+    SET             reduce using rule 22 (statement -> call NEWLINE .)
+    RESET           reduce using rule 22 (statement -> call NEWLINE .)
+    CLR             reduce using rule 22 (statement -> call NEWLINE .)
+    INC             reduce using rule 22 (statement -> call NEWLINE .)
+    DEC             reduce using rule 22 (statement -> call NEWLINE .)
+    INT             reduce using rule 22 (statement -> call NEWLINE .)
+    CINT            reduce using rule 22 (statement -> call NEWLINE .)
+    BOOLEAN         reduce using rule 22 (statement -> call NEWLINE .)
+    CBOOLEAN        reduce using rule 22 (statement -> call NEWLINE .)
+    NEWLINE         reduce using rule 22 (statement -> call NEWLINE .)
+    $end            reduce using rule 22 (statement -> call NEWLINE .)
+    RPAREN          reduce using rule 22 (statement -> call NEWLINE .)
+
+
+state 47
+
+    (23) statement -> empty NEWLINE .
+
+    MAP             reduce using rule 23 (statement -> empty NEWLINE .)
+    WHILE           reduce using rule 23 (statement -> empty NEWLINE .)
+    DO              reduce using rule 23 (statement -> empty NEWLINE .)
+    IF              reduce using rule 23 (statement -> empty NEWLINE .)
+    LEFT            reduce using rule 23 (statement -> empty NEWLINE .)
+    RIGHT           reduce using rule 23 (statement -> empty NEWLINE .)
+    BACK            reduce using rule 23 (statement -> empty NEWLINE .)
+    STEP            reduce using rule 23 (statement -> empty NEWLINE .)
+    LOOK            reduce using rule 23 (statement -> empty NEWLINE .)
+    PROC            reduce using rule 23 (statement -> empty NEWLINE .)
+    NAME            reduce using rule 23 (statement -> empty NEWLINE .)
+    BAR             reduce using rule 23 (statement -> empty NEWLINE .)
+    EMP             reduce using rule 23 (statement -> empty NEWLINE .)
+    SET             reduce using rule 23 (statement -> empty NEWLINE .)
+    RESET           reduce using rule 23 (statement -> empty NEWLINE .)
+    CLR             reduce using rule 23 (statement -> empty NEWLINE .)
+    INC             reduce using rule 23 (statement -> empty NEWLINE .)
+    DEC             reduce using rule 23 (statement -> empty NEWLINE .)
+    INT             reduce using rule 23 (statement -> empty NEWLINE .)
+    CINT            reduce using rule 23 (statement -> empty NEWLINE .)
+    BOOLEAN         reduce using rule 23 (statement -> empty NEWLINE .)
+    CBOOLEAN        reduce using rule 23 (statement -> empty NEWLINE .)
+    NEWLINE         reduce using rule 23 (statement -> empty NEWLINE .)
+    $end            reduce using rule 23 (statement -> empty NEWLINE .)
+    RPAREN          reduce using rule 23 (statement -> empty NEWLINE .)
+
+
+state 48
+
+    (24) statement -> cell_proc NEWLINE .
+
+    MAP             reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    WHILE           reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    DO              reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    IF              reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    LEFT            reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    RIGHT           reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    BACK            reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    STEP            reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    LOOK            reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    PROC            reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    NAME            reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    BAR             reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    EMP             reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    SET             reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    RESET           reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    CLR             reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    INC             reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    DEC             reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    INT             reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    CINT            reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    BOOLEAN         reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    CBOOLEAN        reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    NEWLINE         reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    $end            reduce using rule 24 (statement -> cell_proc NEWLINE .)
+    RPAREN          reduce using rule 24 (statement -> cell_proc NEWLINE .)
+
+
+state 49
+
+    (25) statement -> arithmetic_expression NEWLINE .
+
+    MAP             reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    WHILE           reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    DO              reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    IF              reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    LEFT            reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    RIGHT           reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    BACK            reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    STEP            reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    LOOK            reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    PROC            reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    NAME            reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    BAR             reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    EMP             reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    SET             reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    RESET           reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    CLR             reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    INC             reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    DEC             reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    INT             reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    CINT            reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    BOOLEAN         reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    CBOOLEAN        reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    NEWLINE         reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    $end            reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+    RPAREN          reduce using rule 25 (statement -> arithmetic_expression NEWLINE .)
+
+
+state 50
+
+    (26) declaration -> type name . EQUALS expression
+
+    EQUALS          shift and go to state 84
+
+
+state 51
+
+    (28) declaration -> type error .
+
+    NEWLINE         reduce using rule 28 (declaration -> type error .)
+    RPAREN          reduce using rule 28 (declaration -> type error .)
+
+
+state 52
+
+    (35) name -> NAME .
+
+    EQUALS          reduce using rule 35 (name -> NAME .)
+    NEWLINE         reduce using rule 35 (name -> NAME .)
+    RPAREN          reduce using rule 35 (name -> NAME .)
+    NAME            reduce using rule 35 (name -> NAME .)
+    TRUE            reduce using rule 35 (name -> NAME .)
+    FALSE           reduce using rule 35 (name -> NAME .)
+    NUMBER          reduce using rule 35 (name -> NAME .)
+    LT              reduce using rule 35 (name -> NAME .)
+    GT              reduce using rule 35 (name -> NAME .)
+    NOT             reduce using rule 35 (name -> NAME .)
+    OR              reduce using rule 35 (name -> NAME .)
+    INC             reduce using rule 35 (name -> NAME .)
+    DEC             reduce using rule 35 (name -> NAME .)
+    LEFT            reduce using rule 35 (name -> NAME .)
+    RIGHT           reduce using rule 35 (name -> NAME .)
+    BACK            reduce using rule 35 (name -> NAME .)
+    STEP            reduce using rule 35 (name -> NAME .)
+    LOOK            reduce using rule 35 (name -> NAME .)
+    RBR             reduce using rule 35 (name -> NAME .)
+    DO              reduce using rule 35 (name -> NAME .)
+
+
+state 53
+
+    (33) assignment -> name EQUALS . expression
+    (34) assignment -> name EQUALS . error
+    (37) expression -> . name
+    (38) expression -> . const
+    (39) expression -> . number
+    (40) expression -> . logic_expression
+    (41) expression -> . arithmetic_expression
+    (42) expression -> . command
+    (35) name -> . NAME
+    (43) const -> . TRUE
+    (44) const -> . FALSE
+    (36) number -> . NUMBER
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+
+    error           shift and go to state 87
+    NAME            shift and go to state 52
+    TRUE            shift and go to state 93
+    FALSE           shift and go to state 94
+    NUMBER          shift and go to state 95
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+
+    name                           shift and go to state 85
+    expression                     shift and go to state 86
+    const                          shift and go to state 88
+    number                         shift and go to state 89
+    logic_expression               shift and go to state 90
+    arithmetic_expression          shift and go to state 91
+    command                        shift and go to state 92
+
+state 54
+
+    (27) declaration -> MAP name .
+
+    NEWLINE         reduce using rule 27 (declaration -> MAP name .)
+    RPAREN          reduce using rule 27 (declaration -> MAP name .)
+
+
+state 55
+
+    (65) while -> WHILE logic_expression . DO NEWLINE statements_group
+
+    DO              shift and go to state 96
+
+
+state 56
+
+    (67) while -> WHILE error .
+
+    NEWLINE         reduce using rule 67 (while -> WHILE error .)
+    RPAREN          reduce using rule 67 (while -> WHILE error .)
+
+
+state 57
+
+    (45) logic_expression -> LT . expression expression
+    (37) expression -> . name
+    (38) expression -> . const
+    (39) expression -> . number
+    (40) expression -> . logic_expression
+    (41) expression -> . arithmetic_expression
+    (42) expression -> . command
+    (35) name -> . NAME
+    (43) const -> . TRUE
+    (44) const -> . FALSE
+    (36) number -> . NUMBER
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+
+    NAME            shift and go to state 52
+    TRUE            shift and go to state 93
+    FALSE           shift and go to state 94
+    NUMBER          shift and go to state 95
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+
+    expression                     shift and go to state 97
+    name                           shift and go to state 85
+    const                          shift and go to state 88
+    number                         shift and go to state 89
+    logic_expression               shift and go to state 90
+    arithmetic_expression          shift and go to state 91
+    command                        shift and go to state 92
+
+state 58
+
+    (46) logic_expression -> GT . expression expression
+    (37) expression -> . name
+    (38) expression -> . const
+    (39) expression -> . number
+    (40) expression -> . logic_expression
+    (41) expression -> . arithmetic_expression
+    (42) expression -> . command
+    (35) name -> . NAME
+    (43) const -> . TRUE
+    (44) const -> . FALSE
+    (36) number -> . NUMBER
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+
+    NAME            shift and go to state 52
+    TRUE            shift and go to state 93
+    FALSE           shift and go to state 94
+    NUMBER          shift and go to state 95
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+
+    expression                     shift and go to state 98
+    name                           shift and go to state 85
+    const                          shift and go to state 88
+    number                         shift and go to state 89
+    logic_expression               shift and go to state 90
+    arithmetic_expression          shift and go to state 91
+    command                        shift and go to state 92
+
+state 59
+
+    (47) logic_expression -> NOT . expression
+    (48) logic_expression -> NOT . call
+    (37) expression -> . name
+    (38) expression -> . const
+    (39) expression -> . number
+    (40) expression -> . logic_expression
+    (41) expression -> . arithmetic_expression
+    (42) expression -> . command
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (35) name -> . NAME
+    (43) const -> . TRUE
+    (44) const -> . FALSE
+    (36) number -> . NUMBER
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+
+    NAME            shift and go to state 26
+    TRUE            shift and go to state 93
+    FALSE           shift and go to state 94
+    NUMBER          shift and go to state 95
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+
+    expression                     shift and go to state 99
+    call                           shift and go to state 100
+    name                           shift and go to state 85
+    const                          shift and go to state 88
+    number                         shift and go to state 89
+    logic_expression               shift and go to state 90
+    arithmetic_expression          shift and go to state 91
+    command                        shift and go to state 92
+
+state 60
+
+    (49) logic_expression -> OR . or_arg or_arg
+    (61) or_arg -> . call
+    (62) or_arg -> . logic_expression
+    (63) or_arg -> . TRUE
+    (64) or_arg -> . FALSE
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+
+    TRUE            shift and go to state 104
+    FALSE           shift and go to state 105
+    NAME            shift and go to state 106
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+
+    or_arg                         shift and go to state 101
+    call                           shift and go to state 102
+    logic_expression               shift and go to state 103
+
+state 61
+
+    (66) while -> DO error .
+
+    NEWLINE         reduce using rule 66 (while -> DO error .)
+    RPAREN          reduce using rule 66 (while -> DO error .)
+
+
+state 62
+
+    (68) if -> IF logic_expression . NEWLINE statements_group NEWLINE ELSE statements_group
+
+    NEWLINE         shift and go to state 107
+
+
+state 63
+
+    (69) if -> IF error .
+
+    NEWLINE         reduce using rule 69 (if -> IF error .)
+    RPAREN          reduce using rule 69 (if -> IF error .)
+
+
+state 64
+
+    (70) procedure -> PROC NAME . LBR parameters RBR NEWLINE statements_group
+
+    LBR             shift and go to state 108
+
+
+state 65
+
+    (71) procedure -> PROC error .
+
+    NEWLINE         reduce using rule 71 (procedure -> PROC error .)
+    RPAREN          reduce using rule 71 (procedure -> PROC error .)
+
+
+state 66
+
+    (78) call -> NAME LBR . parameters RBR
+    (92) parameters -> . parameters name
+    (93) parameters -> . name
+    (35) name -> . NAME
+
+    NAME            shift and go to state 52
+
+    parameters                     shift and go to state 109
+    name                           shift and go to state 110
+
+state 67
+
+    (90) call -> NAME error .
+
+    NEWLINE         reduce using rule 90 (call -> NAME error .)
+    NAME            reduce using rule 90 (call -> NAME error .)
+    INC             reduce using rule 90 (call -> NAME error .)
+    DEC             reduce using rule 90 (call -> NAME error .)
+    NUMBER          reduce using rule 90 (call -> NAME error .)
+    LT              reduce using rule 90 (call -> NAME error .)
+    GT              reduce using rule 90 (call -> NAME error .)
+    NOT             reduce using rule 90 (call -> NAME error .)
+    OR              reduce using rule 90 (call -> NAME error .)
+    TRUE            reduce using rule 90 (call -> NAME error .)
+    FALSE           reduce using rule 90 (call -> NAME error .)
+    DO              reduce using rule 90 (call -> NAME error .)
+    RPAREN          reduce using rule 90 (call -> NAME error .)
+    LEFT            reduce using rule 90 (call -> NAME error .)
+    RIGHT           reduce using rule 90 (call -> NAME error .)
+    BACK            reduce using rule 90 (call -> NAME error .)
+    STEP            reduce using rule 90 (call -> NAME error .)
+    LOOK            reduce using rule 90 (call -> NAME error .)
+
+
+state 68
+
+    (79) cell_proc -> BAR LBR . cell_arg RBR
+    (84) cell_arg -> . name name number number
+    (35) name -> . NAME
+
+    NAME            shift and go to state 52
+
+    cell_arg                       shift and go to state 111
+    name                           shift and go to state 112
+
+state 69
+
+    (85) cell_proc -> BAR error .
+
+    NEWLINE         reduce using rule 85 (cell_proc -> BAR error .)
+    RPAREN          reduce using rule 85 (cell_proc -> BAR error .)
+
+
+state 70
+
+    (80) cell_proc -> EMP LBR . cell_arg RBR
+    (84) cell_arg -> . name name number number
+    (35) name -> . NAME
+
+    NAME            shift and go to state 52
+
+    cell_arg                       shift and go to state 113
+    name                           shift and go to state 112
+
+state 71
+
+    (86) cell_proc -> EMP error .
+
+    NEWLINE         reduce using rule 86 (cell_proc -> EMP error .)
+    RPAREN          reduce using rule 86 (cell_proc -> EMP error .)
+
+
+state 72
+
+    (81) cell_proc -> SET LBR . cell_arg RBR
+    (84) cell_arg -> . name name number number
+    (35) name -> . NAME
+
+    NAME            shift and go to state 52
+
+    cell_arg                       shift and go to state 114
+    name                           shift and go to state 112
+
+state 73
+
+    (87) cell_proc -> SET error .
+
+    NEWLINE         reduce using rule 87 (cell_proc -> SET error .)
+    RPAREN          reduce using rule 87 (cell_proc -> SET error .)
+
+
+state 74
+
+    (82) cell_proc -> RESET LBR . cell_arg RBR
+    (84) cell_arg -> . name name number number
+    (35) name -> . NAME
+
+    NAME            shift and go to state 52
+
+    cell_arg                       shift and go to state 115
+    name                           shift and go to state 112
+
+state 75
+
+    (88) cell_proc -> RESET error .
+
+    NEWLINE         reduce using rule 88 (cell_proc -> RESET error .)
+    RPAREN          reduce using rule 88 (cell_proc -> RESET error .)
+
+
+state 76
+
+    (83) cell_proc -> CLR LBR . cell_arg RBR
+    (84) cell_arg -> . name name number number
+    (35) name -> . NAME
+
+    NAME            shift and go to state 52
+
+    cell_arg                       shift and go to state 116
+    name                           shift and go to state 112
+
+state 77
+
+    (89) cell_proc -> CLR error .
+
+    NEWLINE         reduce using rule 89 (cell_proc -> CLR error .)
+    RPAREN          reduce using rule 89 (cell_proc -> CLR error .)
+
+
+state 78
+
+    (50) arithmetic_expression -> INC first_ar . second_ar
+    (55) second_ar -> . name
+    (56) second_ar -> . arithmetic_expression
+    (57) second_ar -> . call
+    (58) second_ar -> . number
+    (59) second_ar -> . logic_expression
+    (60) second_ar -> . const
+    (35) name -> . NAME
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (36) number -> . NUMBER
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+    (43) const -> . TRUE
+    (44) const -> . FALSE
+
+    NAME            shift and go to state 82
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    NUMBER          shift and go to state 95
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+    TRUE            shift and go to state 93
+    FALSE           shift and go to state 94
+
+    second_ar                      shift and go to state 117
+    name                           shift and go to state 118
+    arithmetic_expression          shift and go to state 119
+    call                           shift and go to state 120
+    number                         shift and go to state 121
+    logic_expression               shift and go to state 122
+    const                          shift and go to state 123
+
+state 79
+
+    (52) first_ar -> name .
+
+    NAME            reduce using rule 52 (first_ar -> name .)
+    INC             reduce using rule 52 (first_ar -> name .)
+    DEC             reduce using rule 52 (first_ar -> name .)
+    NUMBER          reduce using rule 52 (first_ar -> name .)
+    LT              reduce using rule 52 (first_ar -> name .)
+    GT              reduce using rule 52 (first_ar -> name .)
+    NOT             reduce using rule 52 (first_ar -> name .)
+    OR              reduce using rule 52 (first_ar -> name .)
+    TRUE            reduce using rule 52 (first_ar -> name .)
+    FALSE           reduce using rule 52 (first_ar -> name .)
+
+
+state 80
+
+    (53) first_ar -> arithmetic_expression .
+
+    NAME            reduce using rule 53 (first_ar -> arithmetic_expression .)
+    INC             reduce using rule 53 (first_ar -> arithmetic_expression .)
+    DEC             reduce using rule 53 (first_ar -> arithmetic_expression .)
+    NUMBER          reduce using rule 53 (first_ar -> arithmetic_expression .)
+    LT              reduce using rule 53 (first_ar -> arithmetic_expression .)
+    GT              reduce using rule 53 (first_ar -> arithmetic_expression .)
+    NOT             reduce using rule 53 (first_ar -> arithmetic_expression .)
+    OR              reduce using rule 53 (first_ar -> arithmetic_expression .)
+    TRUE            reduce using rule 53 (first_ar -> arithmetic_expression .)
+    FALSE           reduce using rule 53 (first_ar -> arithmetic_expression .)
+
+
+state 81
+
+    (54) first_ar -> call .
+
+    NAME            reduce using rule 54 (first_ar -> call .)
+    INC             reduce using rule 54 (first_ar -> call .)
+    DEC             reduce using rule 54 (first_ar -> call .)
+    NUMBER          reduce using rule 54 (first_ar -> call .)
+    LT              reduce using rule 54 (first_ar -> call .)
+    GT              reduce using rule 54 (first_ar -> call .)
+    NOT             reduce using rule 54 (first_ar -> call .)
+    OR              reduce using rule 54 (first_ar -> call .)
+    TRUE            reduce using rule 54 (first_ar -> call .)
+    FALSE           reduce using rule 54 (first_ar -> call .)
+
+
+state 82
+
+    (35) name -> NAME .
+    (78) call -> NAME . LBR parameters RBR
+    (90) call -> NAME . error
+
+    NAME            reduce using rule 35 (name -> NAME .)
+    INC             reduce using rule 35 (name -> NAME .)
+    DEC             reduce using rule 35 (name -> NAME .)
+    NUMBER          reduce using rule 35 (name -> NAME .)
+    LT              reduce using rule 35 (name -> NAME .)
+    GT              reduce using rule 35 (name -> NAME .)
+    NOT             reduce using rule 35 (name -> NAME .)
+    OR              reduce using rule 35 (name -> NAME .)
+    TRUE            reduce using rule 35 (name -> NAME .)
+    FALSE           reduce using rule 35 (name -> NAME .)
+    DO              reduce using rule 35 (name -> NAME .)
+    NEWLINE         reduce using rule 35 (name -> NAME .)
+    RPAREN          reduce using rule 35 (name -> NAME .)
+    LEFT            reduce using rule 35 (name -> NAME .)
+    RIGHT           reduce using rule 35 (name -> NAME .)
+    BACK            reduce using rule 35 (name -> NAME .)
+    STEP            reduce using rule 35 (name -> NAME .)
+    LOOK            reduce using rule 35 (name -> NAME .)
+    LBR             shift and go to state 66
+    error           shift and go to state 67
+
+
+state 83
+
+    (51) arithmetic_expression -> DEC first_ar . second_ar
+    (55) second_ar -> . name
+    (56) second_ar -> . arithmetic_expression
+    (57) second_ar -> . call
+    (58) second_ar -> . number
+    (59) second_ar -> . logic_expression
+    (60) second_ar -> . const
+    (35) name -> . NAME
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (36) number -> . NUMBER
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+    (43) const -> . TRUE
+    (44) const -> . FALSE
+
+    NAME            shift and go to state 82
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    NUMBER          shift and go to state 95
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+    TRUE            shift and go to state 93
+    FALSE           shift and go to state 94
+
+    second_ar                      shift and go to state 124
+    name                           shift and go to state 118
+    arithmetic_expression          shift and go to state 119
+    call                           shift and go to state 120
+    number                         shift and go to state 121
+    logic_expression               shift and go to state 122
+    const                          shift and go to state 123
+
+state 84
+
+    (26) declaration -> type name EQUALS . expression
+    (37) expression -> . name
+    (38) expression -> . const
+    (39) expression -> . number
+    (40) expression -> . logic_expression
+    (41) expression -> . arithmetic_expression
+    (42) expression -> . command
+    (35) name -> . NAME
+    (43) const -> . TRUE
+    (44) const -> . FALSE
+    (36) number -> . NUMBER
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+
+    NAME            shift and go to state 52
+    TRUE            shift and go to state 93
+    FALSE           shift and go to state 94
+    NUMBER          shift and go to state 95
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+
+    name                           shift and go to state 85
+    expression                     shift and go to state 125
+    const                          shift and go to state 88
+    number                         shift and go to state 89
+    logic_expression               shift and go to state 90
+    arithmetic_expression          shift and go to state 91
+    command                        shift and go to state 92
+
+state 85
+
+    (37) expression -> name .
+
+    NEWLINE         reduce using rule 37 (expression -> name .)
+    RPAREN          reduce using rule 37 (expression -> name .)
+    NAME            reduce using rule 37 (expression -> name .)
+    TRUE            reduce using rule 37 (expression -> name .)
+    FALSE           reduce using rule 37 (expression -> name .)
+    NUMBER          reduce using rule 37 (expression -> name .)
+    LT              reduce using rule 37 (expression -> name .)
+    GT              reduce using rule 37 (expression -> name .)
+    NOT             reduce using rule 37 (expression -> name .)
+    OR              reduce using rule 37 (expression -> name .)
+    INC             reduce using rule 37 (expression -> name .)
+    DEC             reduce using rule 37 (expression -> name .)
+    LEFT            reduce using rule 37 (expression -> name .)
+    RIGHT           reduce using rule 37 (expression -> name .)
+    BACK            reduce using rule 37 (expression -> name .)
+    STEP            reduce using rule 37 (expression -> name .)
+    LOOK            reduce using rule 37 (expression -> name .)
+    DO              reduce using rule 37 (expression -> name .)
+
+
+state 86
+
+    (33) assignment -> name EQUALS expression .
+
+    NEWLINE         reduce using rule 33 (assignment -> name EQUALS expression .)
+    RPAREN          reduce using rule 33 (assignment -> name EQUALS expression .)
+
+
+state 87
+
+    (34) assignment -> name EQUALS error .
+
+    NEWLINE         reduce using rule 34 (assignment -> name EQUALS error .)
+    RPAREN          reduce using rule 34 (assignment -> name EQUALS error .)
+
+
+state 88
+
+    (38) expression -> const .
+
+    NEWLINE         reduce using rule 38 (expression -> const .)
+    RPAREN          reduce using rule 38 (expression -> const .)
+    NAME            reduce using rule 38 (expression -> const .)
+    TRUE            reduce using rule 38 (expression -> const .)
+    FALSE           reduce using rule 38 (expression -> const .)
+    NUMBER          reduce using rule 38 (expression -> const .)
+    LT              reduce using rule 38 (expression -> const .)
+    GT              reduce using rule 38 (expression -> const .)
+    NOT             reduce using rule 38 (expression -> const .)
+    OR              reduce using rule 38 (expression -> const .)
+    INC             reduce using rule 38 (expression -> const .)
+    DEC             reduce using rule 38 (expression -> const .)
+    LEFT            reduce using rule 38 (expression -> const .)
+    RIGHT           reduce using rule 38 (expression -> const .)
+    BACK            reduce using rule 38 (expression -> const .)
+    STEP            reduce using rule 38 (expression -> const .)
+    LOOK            reduce using rule 38 (expression -> const .)
+    DO              reduce using rule 38 (expression -> const .)
+
+
+state 89
+
+    (39) expression -> number .
+
+    NEWLINE         reduce using rule 39 (expression -> number .)
+    RPAREN          reduce using rule 39 (expression -> number .)
+    NAME            reduce using rule 39 (expression -> number .)
+    TRUE            reduce using rule 39 (expression -> number .)
+    FALSE           reduce using rule 39 (expression -> number .)
+    NUMBER          reduce using rule 39 (expression -> number .)
+    LT              reduce using rule 39 (expression -> number .)
+    GT              reduce using rule 39 (expression -> number .)
+    NOT             reduce using rule 39 (expression -> number .)
+    OR              reduce using rule 39 (expression -> number .)
+    INC             reduce using rule 39 (expression -> number .)
+    DEC             reduce using rule 39 (expression -> number .)
+    LEFT            reduce using rule 39 (expression -> number .)
+    RIGHT           reduce using rule 39 (expression -> number .)
+    BACK            reduce using rule 39 (expression -> number .)
+    STEP            reduce using rule 39 (expression -> number .)
+    LOOK            reduce using rule 39 (expression -> number .)
+    DO              reduce using rule 39 (expression -> number .)
+
+
+state 90
+
+    (40) expression -> logic_expression .
+
+    NEWLINE         reduce using rule 40 (expression -> logic_expression .)
+    RPAREN          reduce using rule 40 (expression -> logic_expression .)
+    NAME            reduce using rule 40 (expression -> logic_expression .)
+    TRUE            reduce using rule 40 (expression -> logic_expression .)
+    FALSE           reduce using rule 40 (expression -> logic_expression .)
+    NUMBER          reduce using rule 40 (expression -> logic_expression .)
+    LT              reduce using rule 40 (expression -> logic_expression .)
+    GT              reduce using rule 40 (expression -> logic_expression .)
+    NOT             reduce using rule 40 (expression -> logic_expression .)
+    OR              reduce using rule 40 (expression -> logic_expression .)
+    INC             reduce using rule 40 (expression -> logic_expression .)
+    DEC             reduce using rule 40 (expression -> logic_expression .)
+    LEFT            reduce using rule 40 (expression -> logic_expression .)
+    RIGHT           reduce using rule 40 (expression -> logic_expression .)
+    BACK            reduce using rule 40 (expression -> logic_expression .)
+    STEP            reduce using rule 40 (expression -> logic_expression .)
+    LOOK            reduce using rule 40 (expression -> logic_expression .)
+    DO              reduce using rule 40 (expression -> logic_expression .)
+
+
+state 91
+
+    (41) expression -> arithmetic_expression .
+
+    NEWLINE         reduce using rule 41 (expression -> arithmetic_expression .)
+    RPAREN          reduce using rule 41 (expression -> arithmetic_expression .)
+    NAME            reduce using rule 41 (expression -> arithmetic_expression .)
+    TRUE            reduce using rule 41 (expression -> arithmetic_expression .)
+    FALSE           reduce using rule 41 (expression -> arithmetic_expression .)
+    NUMBER          reduce using rule 41 (expression -> arithmetic_expression .)
+    LT              reduce using rule 41 (expression -> arithmetic_expression .)
+    GT              reduce using rule 41 (expression -> arithmetic_expression .)
+    NOT             reduce using rule 41 (expression -> arithmetic_expression .)
+    OR              reduce using rule 41 (expression -> arithmetic_expression .)
+    INC             reduce using rule 41 (expression -> arithmetic_expression .)
+    DEC             reduce using rule 41 (expression -> arithmetic_expression .)
+    LEFT            reduce using rule 41 (expression -> arithmetic_expression .)
+    RIGHT           reduce using rule 41 (expression -> arithmetic_expression .)
+    BACK            reduce using rule 41 (expression -> arithmetic_expression .)
+    STEP            reduce using rule 41 (expression -> arithmetic_expression .)
+    LOOK            reduce using rule 41 (expression -> arithmetic_expression .)
+    DO              reduce using rule 41 (expression -> arithmetic_expression .)
+
+
+state 92
+
+    (42) expression -> command .
+    (72) command -> command . error
+
+    NEWLINE         reduce using rule 42 (expression -> command .)
+    RPAREN          reduce using rule 42 (expression -> command .)
+    NAME            reduce using rule 42 (expression -> command .)
+    TRUE            reduce using rule 42 (expression -> command .)
+    FALSE           reduce using rule 42 (expression -> command .)
+    NUMBER          reduce using rule 42 (expression -> command .)
+    LT              reduce using rule 42 (expression -> command .)
+    GT              reduce using rule 42 (expression -> command .)
+    NOT             reduce using rule 42 (expression -> command .)
+    OR              reduce using rule 42 (expression -> command .)
+    INC             reduce using rule 42 (expression -> command .)
+    DEC             reduce using rule 42 (expression -> command .)
+    LEFT            reduce using rule 42 (expression -> command .)
+    RIGHT           reduce using rule 42 (expression -> command .)
+    BACK            reduce using rule 42 (expression -> command .)
+    STEP            reduce using rule 42 (expression -> command .)
+    LOOK            reduce using rule 42 (expression -> command .)
+    DO              reduce using rule 42 (expression -> command .)
+    error           shift and go to state 44
+
+
+state 93
+
+    (43) const -> TRUE .
+
+    NEWLINE         reduce using rule 43 (const -> TRUE .)
+    RPAREN          reduce using rule 43 (const -> TRUE .)
+    NAME            reduce using rule 43 (const -> TRUE .)
+    TRUE            reduce using rule 43 (const -> TRUE .)
+    FALSE           reduce using rule 43 (const -> TRUE .)
+    NUMBER          reduce using rule 43 (const -> TRUE .)
+    LT              reduce using rule 43 (const -> TRUE .)
+    GT              reduce using rule 43 (const -> TRUE .)
+    NOT             reduce using rule 43 (const -> TRUE .)
+    OR              reduce using rule 43 (const -> TRUE .)
+    INC             reduce using rule 43 (const -> TRUE .)
+    DEC             reduce using rule 43 (const -> TRUE .)
+    LEFT            reduce using rule 43 (const -> TRUE .)
+    RIGHT           reduce using rule 43 (const -> TRUE .)
+    BACK            reduce using rule 43 (const -> TRUE .)
+    STEP            reduce using rule 43 (const -> TRUE .)
+    LOOK            reduce using rule 43 (const -> TRUE .)
+    DO              reduce using rule 43 (const -> TRUE .)
+
+
+state 94
+
+    (44) const -> FALSE .
+
+    NEWLINE         reduce using rule 44 (const -> FALSE .)
+    RPAREN          reduce using rule 44 (const -> FALSE .)
+    NAME            reduce using rule 44 (const -> FALSE .)
+    TRUE            reduce using rule 44 (const -> FALSE .)
+    FALSE           reduce using rule 44 (const -> FALSE .)
+    NUMBER          reduce using rule 44 (const -> FALSE .)
+    LT              reduce using rule 44 (const -> FALSE .)
+    GT              reduce using rule 44 (const -> FALSE .)
+    NOT             reduce using rule 44 (const -> FALSE .)
+    OR              reduce using rule 44 (const -> FALSE .)
+    INC             reduce using rule 44 (const -> FALSE .)
+    DEC             reduce using rule 44 (const -> FALSE .)
+    LEFT            reduce using rule 44 (const -> FALSE .)
+    RIGHT           reduce using rule 44 (const -> FALSE .)
+    BACK            reduce using rule 44 (const -> FALSE .)
+    STEP            reduce using rule 44 (const -> FALSE .)
+    LOOK            reduce using rule 44 (const -> FALSE .)
+    DO              reduce using rule 44 (const -> FALSE .)
+
+
+state 95
+
+    (36) number -> NUMBER .
+
+    NEWLINE         reduce using rule 36 (number -> NUMBER .)
+    RPAREN          reduce using rule 36 (number -> NUMBER .)
+    NAME            reduce using rule 36 (number -> NUMBER .)
+    TRUE            reduce using rule 36 (number -> NUMBER .)
+    FALSE           reduce using rule 36 (number -> NUMBER .)
+    NUMBER          reduce using rule 36 (number -> NUMBER .)
+    LT              reduce using rule 36 (number -> NUMBER .)
+    GT              reduce using rule 36 (number -> NUMBER .)
+    NOT             reduce using rule 36 (number -> NUMBER .)
+    OR              reduce using rule 36 (number -> NUMBER .)
+    INC             reduce using rule 36 (number -> NUMBER .)
+    DEC             reduce using rule 36 (number -> NUMBER .)
+    LEFT            reduce using rule 36 (number -> NUMBER .)
+    RIGHT           reduce using rule 36 (number -> NUMBER .)
+    BACK            reduce using rule 36 (number -> NUMBER .)
+    STEP            reduce using rule 36 (number -> NUMBER .)
+    LOOK            reduce using rule 36 (number -> NUMBER .)
+    DO              reduce using rule 36 (number -> NUMBER .)
+    RBR             reduce using rule 36 (number -> NUMBER .)
+
+
+state 96
+
+    (65) while -> WHILE logic_expression DO . NEWLINE statements_group
+
+    NEWLINE         shift and go to state 126
+
+
+state 97
+
+    (45) logic_expression -> LT expression . expression
+    (37) expression -> . name
+    (38) expression -> . const
+    (39) expression -> . number
+    (40) expression -> . logic_expression
+    (41) expression -> . arithmetic_expression
+    (42) expression -> . command
+    (35) name -> . NAME
+    (43) const -> . TRUE
+    (44) const -> . FALSE
+    (36) number -> . NUMBER
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+
+    NAME            shift and go to state 52
+    TRUE            shift and go to state 93
+    FALSE           shift and go to state 94
+    NUMBER          shift and go to state 95
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+
+    expression                     shift and go to state 127
+    name                           shift and go to state 85
+    const                          shift and go to state 88
+    number                         shift and go to state 89
+    logic_expression               shift and go to state 90
+    arithmetic_expression          shift and go to state 91
+    command                        shift and go to state 92
+
+state 98
+
+    (46) logic_expression -> GT expression . expression
+    (37) expression -> . name
+    (38) expression -> . const
+    (39) expression -> . number
+    (40) expression -> . logic_expression
+    (41) expression -> . arithmetic_expression
+    (42) expression -> . command
+    (35) name -> . NAME
+    (43) const -> . TRUE
+    (44) const -> . FALSE
+    (36) number -> . NUMBER
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+
+    NAME            shift and go to state 52
+    TRUE            shift and go to state 93
+    FALSE           shift and go to state 94
+    NUMBER          shift and go to state 95
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+
+    expression                     shift and go to state 128
+    name                           shift and go to state 85
+    const                          shift and go to state 88
+    number                         shift and go to state 89
+    logic_expression               shift and go to state 90
+    arithmetic_expression          shift and go to state 91
+    command                        shift and go to state 92
+
+state 99
+
+    (47) logic_expression -> NOT expression .
+
+    DO              reduce using rule 47 (logic_expression -> NOT expression .)
+    NEWLINE         reduce using rule 47 (logic_expression -> NOT expression .)
+    RPAREN          reduce using rule 47 (logic_expression -> NOT expression .)
+    NAME            reduce using rule 47 (logic_expression -> NOT expression .)
+    TRUE            reduce using rule 47 (logic_expression -> NOT expression .)
+    FALSE           reduce using rule 47 (logic_expression -> NOT expression .)
+    NUMBER          reduce using rule 47 (logic_expression -> NOT expression .)
+    LT              reduce using rule 47 (logic_expression -> NOT expression .)
+    GT              reduce using rule 47 (logic_expression -> NOT expression .)
+    NOT             reduce using rule 47 (logic_expression -> NOT expression .)
+    OR              reduce using rule 47 (logic_expression -> NOT expression .)
+    INC             reduce using rule 47 (logic_expression -> NOT expression .)
+    DEC             reduce using rule 47 (logic_expression -> NOT expression .)
+    LEFT            reduce using rule 47 (logic_expression -> NOT expression .)
+    RIGHT           reduce using rule 47 (logic_expression -> NOT expression .)
+    BACK            reduce using rule 47 (logic_expression -> NOT expression .)
+    STEP            reduce using rule 47 (logic_expression -> NOT expression .)
+    LOOK            reduce using rule 47 (logic_expression -> NOT expression .)
+
+
+state 100
+
+    (48) logic_expression -> NOT call .
+
+    DO              reduce using rule 48 (logic_expression -> NOT call .)
+    NEWLINE         reduce using rule 48 (logic_expression -> NOT call .)
+    RPAREN          reduce using rule 48 (logic_expression -> NOT call .)
+    NAME            reduce using rule 48 (logic_expression -> NOT call .)
+    TRUE            reduce using rule 48 (logic_expression -> NOT call .)
+    FALSE           reduce using rule 48 (logic_expression -> NOT call .)
+    NUMBER          reduce using rule 48 (logic_expression -> NOT call .)
+    LT              reduce using rule 48 (logic_expression -> NOT call .)
+    GT              reduce using rule 48 (logic_expression -> NOT call .)
+    NOT             reduce using rule 48 (logic_expression -> NOT call .)
+    OR              reduce using rule 48 (logic_expression -> NOT call .)
+    INC             reduce using rule 48 (logic_expression -> NOT call .)
+    DEC             reduce using rule 48 (logic_expression -> NOT call .)
+    LEFT            reduce using rule 48 (logic_expression -> NOT call .)
+    RIGHT           reduce using rule 48 (logic_expression -> NOT call .)
+    BACK            reduce using rule 48 (logic_expression -> NOT call .)
+    STEP            reduce using rule 48 (logic_expression -> NOT call .)
+    LOOK            reduce using rule 48 (logic_expression -> NOT call .)
+
+
+state 101
+
+    (49) logic_expression -> OR or_arg . or_arg
+    (61) or_arg -> . call
+    (62) or_arg -> . logic_expression
+    (63) or_arg -> . TRUE
+    (64) or_arg -> . FALSE
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (45) logic_expression -> . LT expression expression
+    (46) logic_expression -> . GT expression expression
+    (47) logic_expression -> . NOT expression
+    (48) logic_expression -> . NOT call
+    (49) logic_expression -> . OR or_arg or_arg
+
+    TRUE            shift and go to state 104
+    FALSE           shift and go to state 105
+    NAME            shift and go to state 106
+    LT              shift and go to state 57
+    GT              shift and go to state 58
+    NOT             shift and go to state 59
+    OR              shift and go to state 60
+
+    or_arg                         shift and go to state 129
+    call                           shift and go to state 102
+    logic_expression               shift and go to state 103
+
+state 102
+
+    (61) or_arg -> call .
+
+    TRUE            reduce using rule 61 (or_arg -> call .)
+    FALSE           reduce using rule 61 (or_arg -> call .)
+    NAME            reduce using rule 61 (or_arg -> call .)
+    LT              reduce using rule 61 (or_arg -> call .)
+    GT              reduce using rule 61 (or_arg -> call .)
+    NOT             reduce using rule 61 (or_arg -> call .)
+    OR              reduce using rule 61 (or_arg -> call .)
+    DO              reduce using rule 61 (or_arg -> call .)
+    NEWLINE         reduce using rule 61 (or_arg -> call .)
+    RPAREN          reduce using rule 61 (or_arg -> call .)
+    NUMBER          reduce using rule 61 (or_arg -> call .)
+    INC             reduce using rule 61 (or_arg -> call .)
+    DEC             reduce using rule 61 (or_arg -> call .)
+    LEFT            reduce using rule 61 (or_arg -> call .)
+    RIGHT           reduce using rule 61 (or_arg -> call .)
+    BACK            reduce using rule 61 (or_arg -> call .)
+    STEP            reduce using rule 61 (or_arg -> call .)
+    LOOK            reduce using rule 61 (or_arg -> call .)
+
+
+state 103
+
+    (62) or_arg -> logic_expression .
+
+    TRUE            reduce using rule 62 (or_arg -> logic_expression .)
+    FALSE           reduce using rule 62 (or_arg -> logic_expression .)
+    NAME            reduce using rule 62 (or_arg -> logic_expression .)
+    LT              reduce using rule 62 (or_arg -> logic_expression .)
+    GT              reduce using rule 62 (or_arg -> logic_expression .)
+    NOT             reduce using rule 62 (or_arg -> logic_expression .)
+    OR              reduce using rule 62 (or_arg -> logic_expression .)
+    DO              reduce using rule 62 (or_arg -> logic_expression .)
+    NEWLINE         reduce using rule 62 (or_arg -> logic_expression .)
+    RPAREN          reduce using rule 62 (or_arg -> logic_expression .)
+    NUMBER          reduce using rule 62 (or_arg -> logic_expression .)
+    INC             reduce using rule 62 (or_arg -> logic_expression .)
+    DEC             reduce using rule 62 (or_arg -> logic_expression .)
+    LEFT            reduce using rule 62 (or_arg -> logic_expression .)
+    RIGHT           reduce using rule 62 (or_arg -> logic_expression .)
+    BACK            reduce using rule 62 (or_arg -> logic_expression .)
+    STEP            reduce using rule 62 (or_arg -> logic_expression .)
+    LOOK            reduce using rule 62 (or_arg -> logic_expression .)
+
+
+state 104
+
+    (63) or_arg -> TRUE .
+
+    TRUE            reduce using rule 63 (or_arg -> TRUE .)
+    FALSE           reduce using rule 63 (or_arg -> TRUE .)
+    NAME            reduce using rule 63 (or_arg -> TRUE .)
+    LT              reduce using rule 63 (or_arg -> TRUE .)
+    GT              reduce using rule 63 (or_arg -> TRUE .)
+    NOT             reduce using rule 63 (or_arg -> TRUE .)
+    OR              reduce using rule 63 (or_arg -> TRUE .)
+    DO              reduce using rule 63 (or_arg -> TRUE .)
+    NEWLINE         reduce using rule 63 (or_arg -> TRUE .)
+    RPAREN          reduce using rule 63 (or_arg -> TRUE .)
+    NUMBER          reduce using rule 63 (or_arg -> TRUE .)
+    INC             reduce using rule 63 (or_arg -> TRUE .)
+    DEC             reduce using rule 63 (or_arg -> TRUE .)
+    LEFT            reduce using rule 63 (or_arg -> TRUE .)
+    RIGHT           reduce using rule 63 (or_arg -> TRUE .)
+    BACK            reduce using rule 63 (or_arg -> TRUE .)
+    STEP            reduce using rule 63 (or_arg -> TRUE .)
+    LOOK            reduce using rule 63 (or_arg -> TRUE .)
+
+
+state 105
+
+    (64) or_arg -> FALSE .
+
+    TRUE            reduce using rule 64 (or_arg -> FALSE .)
+    FALSE           reduce using rule 64 (or_arg -> FALSE .)
+    NAME            reduce using rule 64 (or_arg -> FALSE .)
+    LT              reduce using rule 64 (or_arg -> FALSE .)
+    GT              reduce using rule 64 (or_arg -> FALSE .)
+    NOT             reduce using rule 64 (or_arg -> FALSE .)
+    OR              reduce using rule 64 (or_arg -> FALSE .)
+    DO              reduce using rule 64 (or_arg -> FALSE .)
+    NEWLINE         reduce using rule 64 (or_arg -> FALSE .)
+    RPAREN          reduce using rule 64 (or_arg -> FALSE .)
+    NUMBER          reduce using rule 64 (or_arg -> FALSE .)
+    INC             reduce using rule 64 (or_arg -> FALSE .)
+    DEC             reduce using rule 64 (or_arg -> FALSE .)
+    LEFT            reduce using rule 64 (or_arg -> FALSE .)
+    RIGHT           reduce using rule 64 (or_arg -> FALSE .)
+    BACK            reduce using rule 64 (or_arg -> FALSE .)
+    STEP            reduce using rule 64 (or_arg -> FALSE .)
+    LOOK            reduce using rule 64 (or_arg -> FALSE .)
+
+
+state 106
+
+    (78) call -> NAME . LBR parameters RBR
+    (90) call -> NAME . error
+
+    LBR             shift and go to state 66
+    error           shift and go to state 67
+
+
+state 107
+
+    (68) if -> IF logic_expression NEWLINE . statements_group NEWLINE ELSE statements_group
+    (2) statements_group -> . LPAREN statements inner_statement RPAREN
+    (3) statements_group -> . inner_statement
+    (4) inner_statement -> . declaration
+    (5) inner_statement -> . assignment
+    (6) inner_statement -> . while
+    (7) inner_statement -> . if
+    (8) inner_statement -> . command
+    (9) inner_statement -> . procedure
+    (10) inner_statement -> . call
+    (11) inner_statement -> . empty
+    (12) inner_statement -> . cell_proc
+    (13) inner_statement -> . arithmetic_expression
+    (26) declaration -> . type name EQUALS expression
+    (27) declaration -> . MAP name
+    (28) declaration -> . type error
+    (33) assignment -> . name EQUALS expression
+    (34) assignment -> . name EQUALS error
+    (65) while -> . WHILE logic_expression DO NEWLINE statements_group
+    (66) while -> . DO error
+    (67) while -> . WHILE error
+    (68) if -> . IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+    (69) if -> . IF error
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+    (70) procedure -> . PROC NAME LBR parameters RBR NEWLINE statements_group
+    (71) procedure -> . PROC error
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (91) empty -> .
+    (79) cell_proc -> . BAR LBR cell_arg RBR
+    (80) cell_proc -> . EMP LBR cell_arg RBR
+    (81) cell_proc -> . SET LBR cell_arg RBR
+    (82) cell_proc -> . RESET LBR cell_arg RBR
+    (83) cell_proc -> . CLR LBR cell_arg RBR
+    (85) cell_proc -> . BAR error
+    (86) cell_proc -> . EMP error
+    (87) cell_proc -> . SET error
+    (88) cell_proc -> . RESET error
+    (89) cell_proc -> . CLR error
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (29) type -> . INT
+    (30) type -> . CINT
+    (31) type -> . BOOLEAN
+    (32) type -> . CBOOLEAN
+    (35) name -> . NAME
+
+    LPAREN          shift and go to state 131
+    MAP             shift and go to state 16
+    WHILE           shift and go to state 17
+    DO              shift and go to state 18
+    IF              shift and go to state 19
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+    PROC            shift and go to state 25
+    NAME            shift and go to state 26
+    NEWLINE         reduce using rule 91 (empty -> .)
+    BAR             shift and go to state 27
+    EMP             shift and go to state 28
+    SET             shift and go to state 29
+    RESET           shift and go to state 30
+    CLR             shift and go to state 31
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    INT             shift and go to state 34
+    CINT            shift and go to state 35
+    BOOLEAN         shift and go to state 36
+    CBOOLEAN        shift and go to state 37
+
+    statements_group               shift and go to state 130
+    inner_statement                shift and go to state 132
+    declaration                    shift and go to state 133
+    assignment                     shift and go to state 134
+    while                          shift and go to state 135
+    if                             shift and go to state 136
+    command                        shift and go to state 137
+    procedure                      shift and go to state 138
+    call                           shift and go to state 139
+    empty                          shift and go to state 140
+    cell_proc                      shift and go to state 141
+    arithmetic_expression          shift and go to state 142
+    type                           shift and go to state 14
+    name                           shift and go to state 15
+
+state 108
+
+    (70) procedure -> PROC NAME LBR . parameters RBR NEWLINE statements_group
+    (92) parameters -> . parameters name
+    (93) parameters -> . name
+    (35) name -> . NAME
+
+    NAME            shift and go to state 52
+
+    parameters                     shift and go to state 143
+    name                           shift and go to state 110
+
+state 109
+
+    (78) call -> NAME LBR parameters . RBR
+    (92) parameters -> parameters . name
+    (35) name -> . NAME
+
+    RBR             shift and go to state 144
+    NAME            shift and go to state 52
+
+    name                           shift and go to state 145
+
+state 110
+
+    (93) parameters -> name .
+
+    RBR             reduce using rule 93 (parameters -> name .)
+    NAME            reduce using rule 93 (parameters -> name .)
+
+
+state 111
+
+    (79) cell_proc -> BAR LBR cell_arg . RBR
+
+    RBR             shift and go to state 146
+
+
+state 112
+
+    (84) cell_arg -> name . name number number
+    (35) name -> . NAME
+
+    NAME            shift and go to state 52
+
+    name                           shift and go to state 147
+
+state 113
+
+    (80) cell_proc -> EMP LBR cell_arg . RBR
+
+    RBR             shift and go to state 148
+
+
+state 114
+
+    (81) cell_proc -> SET LBR cell_arg . RBR
+
+    RBR             shift and go to state 149
+
+
+state 115
+
+    (82) cell_proc -> RESET LBR cell_arg . RBR
+
+    RBR             shift and go to state 150
+
+
+state 116
+
+    (83) cell_proc -> CLR LBR cell_arg . RBR
+
+    RBR             shift and go to state 151
+
+
+state 117
+
+    (50) arithmetic_expression -> INC first_ar second_ar .
+
+    NEWLINE         reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    NAME            reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    INC             reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    DEC             reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    NUMBER          reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    LT              reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    GT              reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    NOT             reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    OR              reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    TRUE            reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    FALSE           reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    RPAREN          reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    LEFT            reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    RIGHT           reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    BACK            reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    STEP            reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    LOOK            reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+    DO              reduce using rule 50 (arithmetic_expression -> INC first_ar second_ar .)
+
+
+state 118
+
+    (55) second_ar -> name .
+
+    DO              reduce using rule 55 (second_ar -> name .)
+    NEWLINE         reduce using rule 55 (second_ar -> name .)
+    RPAREN          reduce using rule 55 (second_ar -> name .)
+    NAME            reduce using rule 55 (second_ar -> name .)
+    TRUE            reduce using rule 55 (second_ar -> name .)
+    FALSE           reduce using rule 55 (second_ar -> name .)
+    NUMBER          reduce using rule 55 (second_ar -> name .)
+    LT              reduce using rule 55 (second_ar -> name .)
+    GT              reduce using rule 55 (second_ar -> name .)
+    NOT             reduce using rule 55 (second_ar -> name .)
+    OR              reduce using rule 55 (second_ar -> name .)
+    INC             reduce using rule 55 (second_ar -> name .)
+    DEC             reduce using rule 55 (second_ar -> name .)
+    LEFT            reduce using rule 55 (second_ar -> name .)
+    RIGHT           reduce using rule 55 (second_ar -> name .)
+    BACK            reduce using rule 55 (second_ar -> name .)
+    STEP            reduce using rule 55 (second_ar -> name .)
+    LOOK            reduce using rule 55 (second_ar -> name .)
+
+
+state 119
+
+    (56) second_ar -> arithmetic_expression .
+
+    DO              reduce using rule 56 (second_ar -> arithmetic_expression .)
+    NEWLINE         reduce using rule 56 (second_ar -> arithmetic_expression .)
+    RPAREN          reduce using rule 56 (second_ar -> arithmetic_expression .)
+    NAME            reduce using rule 56 (second_ar -> arithmetic_expression .)
+    TRUE            reduce using rule 56 (second_ar -> arithmetic_expression .)
+    FALSE           reduce using rule 56 (second_ar -> arithmetic_expression .)
+    NUMBER          reduce using rule 56 (second_ar -> arithmetic_expression .)
+    LT              reduce using rule 56 (second_ar -> arithmetic_expression .)
+    GT              reduce using rule 56 (second_ar -> arithmetic_expression .)
+    NOT             reduce using rule 56 (second_ar -> arithmetic_expression .)
+    OR              reduce using rule 56 (second_ar -> arithmetic_expression .)
+    INC             reduce using rule 56 (second_ar -> arithmetic_expression .)
+    DEC             reduce using rule 56 (second_ar -> arithmetic_expression .)
+    LEFT            reduce using rule 56 (second_ar -> arithmetic_expression .)
+    RIGHT           reduce using rule 56 (second_ar -> arithmetic_expression .)
+    BACK            reduce using rule 56 (second_ar -> arithmetic_expression .)
+    STEP            reduce using rule 56 (second_ar -> arithmetic_expression .)
+    LOOK            reduce using rule 56 (second_ar -> arithmetic_expression .)
+
+
+state 120
+
+    (57) second_ar -> call .
+
+    DO              reduce using rule 57 (second_ar -> call .)
+    NEWLINE         reduce using rule 57 (second_ar -> call .)
+    RPAREN          reduce using rule 57 (second_ar -> call .)
+    NAME            reduce using rule 57 (second_ar -> call .)
+    TRUE            reduce using rule 57 (second_ar -> call .)
+    FALSE           reduce using rule 57 (second_ar -> call .)
+    NUMBER          reduce using rule 57 (second_ar -> call .)
+    LT              reduce using rule 57 (second_ar -> call .)
+    GT              reduce using rule 57 (second_ar -> call .)
+    NOT             reduce using rule 57 (second_ar -> call .)
+    OR              reduce using rule 57 (second_ar -> call .)
+    INC             reduce using rule 57 (second_ar -> call .)
+    DEC             reduce using rule 57 (second_ar -> call .)
+    LEFT            reduce using rule 57 (second_ar -> call .)
+    RIGHT           reduce using rule 57 (second_ar -> call .)
+    BACK            reduce using rule 57 (second_ar -> call .)
+    STEP            reduce using rule 57 (second_ar -> call .)
+    LOOK            reduce using rule 57 (second_ar -> call .)
+
+
+state 121
+
+    (58) second_ar -> number .
+
+    DO              reduce using rule 58 (second_ar -> number .)
+    NEWLINE         reduce using rule 58 (second_ar -> number .)
+    RPAREN          reduce using rule 58 (second_ar -> number .)
+    NAME            reduce using rule 58 (second_ar -> number .)
+    TRUE            reduce using rule 58 (second_ar -> number .)
+    FALSE           reduce using rule 58 (second_ar -> number .)
+    NUMBER          reduce using rule 58 (second_ar -> number .)
+    LT              reduce using rule 58 (second_ar -> number .)
+    GT              reduce using rule 58 (second_ar -> number .)
+    NOT             reduce using rule 58 (second_ar -> number .)
+    OR              reduce using rule 58 (second_ar -> number .)
+    INC             reduce using rule 58 (second_ar -> number .)
+    DEC             reduce using rule 58 (second_ar -> number .)
+    LEFT            reduce using rule 58 (second_ar -> number .)
+    RIGHT           reduce using rule 58 (second_ar -> number .)
+    BACK            reduce using rule 58 (second_ar -> number .)
+    STEP            reduce using rule 58 (second_ar -> number .)
+    LOOK            reduce using rule 58 (second_ar -> number .)
+
+
+state 122
+
+    (59) second_ar -> logic_expression .
+
+    DO              reduce using rule 59 (second_ar -> logic_expression .)
+    NEWLINE         reduce using rule 59 (second_ar -> logic_expression .)
+    RPAREN          reduce using rule 59 (second_ar -> logic_expression .)
+    NAME            reduce using rule 59 (second_ar -> logic_expression .)
+    TRUE            reduce using rule 59 (second_ar -> logic_expression .)
+    FALSE           reduce using rule 59 (second_ar -> logic_expression .)
+    NUMBER          reduce using rule 59 (second_ar -> logic_expression .)
+    LT              reduce using rule 59 (second_ar -> logic_expression .)
+    GT              reduce using rule 59 (second_ar -> logic_expression .)
+    NOT             reduce using rule 59 (second_ar -> logic_expression .)
+    OR              reduce using rule 59 (second_ar -> logic_expression .)
+    INC             reduce using rule 59 (second_ar -> logic_expression .)
+    DEC             reduce using rule 59 (second_ar -> logic_expression .)
+    LEFT            reduce using rule 59 (second_ar -> logic_expression .)
+    RIGHT           reduce using rule 59 (second_ar -> logic_expression .)
+    BACK            reduce using rule 59 (second_ar -> logic_expression .)
+    STEP            reduce using rule 59 (second_ar -> logic_expression .)
+    LOOK            reduce using rule 59 (second_ar -> logic_expression .)
+
+
+state 123
+
+    (60) second_ar -> const .
+
+    DO              reduce using rule 60 (second_ar -> const .)
+    NEWLINE         reduce using rule 60 (second_ar -> const .)
+    RPAREN          reduce using rule 60 (second_ar -> const .)
+    NAME            reduce using rule 60 (second_ar -> const .)
+    TRUE            reduce using rule 60 (second_ar -> const .)
+    FALSE           reduce using rule 60 (second_ar -> const .)
+    NUMBER          reduce using rule 60 (second_ar -> const .)
+    LT              reduce using rule 60 (second_ar -> const .)
+    GT              reduce using rule 60 (second_ar -> const .)
+    NOT             reduce using rule 60 (second_ar -> const .)
+    OR              reduce using rule 60 (second_ar -> const .)
+    INC             reduce using rule 60 (second_ar -> const .)
+    DEC             reduce using rule 60 (second_ar -> const .)
+    LEFT            reduce using rule 60 (second_ar -> const .)
+    RIGHT           reduce using rule 60 (second_ar -> const .)
+    BACK            reduce using rule 60 (second_ar -> const .)
+    STEP            reduce using rule 60 (second_ar -> const .)
+    LOOK            reduce using rule 60 (second_ar -> const .)
+
+
+state 124
+
+    (51) arithmetic_expression -> DEC first_ar second_ar .
+
+    NEWLINE         reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    NAME            reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    INC             reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    DEC             reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    NUMBER          reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    LT              reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    GT              reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    NOT             reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    OR              reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    TRUE            reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    FALSE           reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    RPAREN          reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    LEFT            reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    RIGHT           reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    BACK            reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    STEP            reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    LOOK            reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+    DO              reduce using rule 51 (arithmetic_expression -> DEC first_ar second_ar .)
+
+
+state 125
+
+    (26) declaration -> type name EQUALS expression .
+
+    NEWLINE         reduce using rule 26 (declaration -> type name EQUALS expression .)
+    RPAREN          reduce using rule 26 (declaration -> type name EQUALS expression .)
+
+
+state 126
+
+    (65) while -> WHILE logic_expression DO NEWLINE . statements_group
+    (2) statements_group -> . LPAREN statements inner_statement RPAREN
+    (3) statements_group -> . inner_statement
+    (4) inner_statement -> . declaration
+    (5) inner_statement -> . assignment
+    (6) inner_statement -> . while
+    (7) inner_statement -> . if
+    (8) inner_statement -> . command
+    (9) inner_statement -> . procedure
+    (10) inner_statement -> . call
+    (11) inner_statement -> . empty
+    (12) inner_statement -> . cell_proc
+    (13) inner_statement -> . arithmetic_expression
+    (26) declaration -> . type name EQUALS expression
+    (27) declaration -> . MAP name
+    (28) declaration -> . type error
+    (33) assignment -> . name EQUALS expression
+    (34) assignment -> . name EQUALS error
+    (65) while -> . WHILE logic_expression DO NEWLINE statements_group
+    (66) while -> . DO error
+    (67) while -> . WHILE error
+    (68) if -> . IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+    (69) if -> . IF error
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+    (70) procedure -> . PROC NAME LBR parameters RBR NEWLINE statements_group
+    (71) procedure -> . PROC error
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (91) empty -> .
+    (79) cell_proc -> . BAR LBR cell_arg RBR
+    (80) cell_proc -> . EMP LBR cell_arg RBR
+    (81) cell_proc -> . SET LBR cell_arg RBR
+    (82) cell_proc -> . RESET LBR cell_arg RBR
+    (83) cell_proc -> . CLR LBR cell_arg RBR
+    (85) cell_proc -> . BAR error
+    (86) cell_proc -> . EMP error
+    (87) cell_proc -> . SET error
+    (88) cell_proc -> . RESET error
+    (89) cell_proc -> . CLR error
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (29) type -> . INT
+    (30) type -> . CINT
+    (31) type -> . BOOLEAN
+    (32) type -> . CBOOLEAN
+    (35) name -> . NAME
+
+    LPAREN          shift and go to state 131
+    MAP             shift and go to state 16
+    WHILE           shift and go to state 17
+    DO              shift and go to state 18
+    IF              shift and go to state 19
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+    PROC            shift and go to state 25
+    NAME            shift and go to state 26
+    NEWLINE         reduce using rule 91 (empty -> .)
+    RPAREN          reduce using rule 91 (empty -> .)
+    BAR             shift and go to state 27
+    EMP             shift and go to state 28
+    SET             shift and go to state 29
+    RESET           shift and go to state 30
+    CLR             shift and go to state 31
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    INT             shift and go to state 34
+    CINT            shift and go to state 35
+    BOOLEAN         shift and go to state 36
+    CBOOLEAN        shift and go to state 37
+
+    statements_group               shift and go to state 152
+    inner_statement                shift and go to state 132
+    declaration                    shift and go to state 133
+    assignment                     shift and go to state 134
+    while                          shift and go to state 135
+    if                             shift and go to state 136
+    command                        shift and go to state 137
+    procedure                      shift and go to state 138
+    call                           shift and go to state 139
+    empty                          shift and go to state 140
+    cell_proc                      shift and go to state 141
+    arithmetic_expression          shift and go to state 142
+    type                           shift and go to state 14
+    name                           shift and go to state 15
+
+state 127
+
+    (45) logic_expression -> LT expression expression .
+
+    DO              reduce using rule 45 (logic_expression -> LT expression expression .)
+    NEWLINE         reduce using rule 45 (logic_expression -> LT expression expression .)
+    RPAREN          reduce using rule 45 (logic_expression -> LT expression expression .)
+    NAME            reduce using rule 45 (logic_expression -> LT expression expression .)
+    TRUE            reduce using rule 45 (logic_expression -> LT expression expression .)
+    FALSE           reduce using rule 45 (logic_expression -> LT expression expression .)
+    NUMBER          reduce using rule 45 (logic_expression -> LT expression expression .)
+    LT              reduce using rule 45 (logic_expression -> LT expression expression .)
+    GT              reduce using rule 45 (logic_expression -> LT expression expression .)
+    NOT             reduce using rule 45 (logic_expression -> LT expression expression .)
+    OR              reduce using rule 45 (logic_expression -> LT expression expression .)
+    INC             reduce using rule 45 (logic_expression -> LT expression expression .)
+    DEC             reduce using rule 45 (logic_expression -> LT expression expression .)
+    LEFT            reduce using rule 45 (logic_expression -> LT expression expression .)
+    RIGHT           reduce using rule 45 (logic_expression -> LT expression expression .)
+    BACK            reduce using rule 45 (logic_expression -> LT expression expression .)
+    STEP            reduce using rule 45 (logic_expression -> LT expression expression .)
+    LOOK            reduce using rule 45 (logic_expression -> LT expression expression .)
+
+
+state 128
+
+    (46) logic_expression -> GT expression expression .
+
+    DO              reduce using rule 46 (logic_expression -> GT expression expression .)
+    NEWLINE         reduce using rule 46 (logic_expression -> GT expression expression .)
+    RPAREN          reduce using rule 46 (logic_expression -> GT expression expression .)
+    NAME            reduce using rule 46 (logic_expression -> GT expression expression .)
+    TRUE            reduce using rule 46 (logic_expression -> GT expression expression .)
+    FALSE           reduce using rule 46 (logic_expression -> GT expression expression .)
+    NUMBER          reduce using rule 46 (logic_expression -> GT expression expression .)
+    LT              reduce using rule 46 (logic_expression -> GT expression expression .)
+    GT              reduce using rule 46 (logic_expression -> GT expression expression .)
+    NOT             reduce using rule 46 (logic_expression -> GT expression expression .)
+    OR              reduce using rule 46 (logic_expression -> GT expression expression .)
+    INC             reduce using rule 46 (logic_expression -> GT expression expression .)
+    DEC             reduce using rule 46 (logic_expression -> GT expression expression .)
+    LEFT            reduce using rule 46 (logic_expression -> GT expression expression .)
+    RIGHT           reduce using rule 46 (logic_expression -> GT expression expression .)
+    BACK            reduce using rule 46 (logic_expression -> GT expression expression .)
+    STEP            reduce using rule 46 (logic_expression -> GT expression expression .)
+    LOOK            reduce using rule 46 (logic_expression -> GT expression expression .)
+
+
+state 129
+
+    (49) logic_expression -> OR or_arg or_arg .
+
+    DO              reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    NEWLINE         reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    RPAREN          reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    NAME            reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    TRUE            reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    FALSE           reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    NUMBER          reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    LT              reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    GT              reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    NOT             reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    OR              reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    INC             reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    DEC             reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    LEFT            reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    RIGHT           reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    BACK            reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    STEP            reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+    LOOK            reduce using rule 49 (logic_expression -> OR or_arg or_arg .)
+
+
+state 130
+
+    (68) if -> IF logic_expression NEWLINE statements_group . NEWLINE ELSE statements_group
+
+    NEWLINE         shift and go to state 153
+
+
+state 131
+
+    (2) statements_group -> LPAREN . statements inner_statement RPAREN
+    (14) statements -> . statements statement
+    (15) statements -> . statement
+    (16) statement -> . declaration NEWLINE
+    (17) statement -> . assignment NEWLINE
+    (18) statement -> . while NEWLINE
+    (19) statement -> . if NEWLINE
+    (20) statement -> . command NEWLINE
+    (21) statement -> . procedure NEWLINE
+    (22) statement -> . call NEWLINE
+    (23) statement -> . empty NEWLINE
+    (24) statement -> . cell_proc NEWLINE
+    (25) statement -> . arithmetic_expression NEWLINE
+    (26) declaration -> . type name EQUALS expression
+    (27) declaration -> . MAP name
+    (28) declaration -> . type error
+    (33) assignment -> . name EQUALS expression
+    (34) assignment -> . name EQUALS error
+    (65) while -> . WHILE logic_expression DO NEWLINE statements_group
+    (66) while -> . DO error
+    (67) while -> . WHILE error
+    (68) if -> . IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+    (69) if -> . IF error
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+    (70) procedure -> . PROC NAME LBR parameters RBR NEWLINE statements_group
+    (71) procedure -> . PROC error
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (91) empty -> .
+    (79) cell_proc -> . BAR LBR cell_arg RBR
+    (80) cell_proc -> . EMP LBR cell_arg RBR
+    (81) cell_proc -> . SET LBR cell_arg RBR
+    (82) cell_proc -> . RESET LBR cell_arg RBR
+    (83) cell_proc -> . CLR LBR cell_arg RBR
+    (85) cell_proc -> . BAR error
+    (86) cell_proc -> . EMP error
+    (87) cell_proc -> . SET error
+    (88) cell_proc -> . RESET error
+    (89) cell_proc -> . CLR error
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (29) type -> . INT
+    (30) type -> . CINT
+    (31) type -> . BOOLEAN
+    (32) type -> . CBOOLEAN
+    (35) name -> . NAME
+
+    MAP             shift and go to state 16
+    WHILE           shift and go to state 17
+    DO              shift and go to state 18
+    IF              shift and go to state 19
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+    PROC            shift and go to state 25
+    NAME            shift and go to state 26
+    NEWLINE         reduce using rule 91 (empty -> .)
+    BAR             shift and go to state 27
+    EMP             shift and go to state 28
+    SET             shift and go to state 29
+    RESET           shift and go to state 30
+    CLR             shift and go to state 31
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    INT             shift and go to state 34
+    CINT            shift and go to state 35
+    BOOLEAN         shift and go to state 36
+    CBOOLEAN        shift and go to state 37
+
+    statements                     shift and go to state 154
+    statement                      shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    while                          shift and go to state 6
+    if                             shift and go to state 7
+    command                        shift and go to state 8
+    procedure                      shift and go to state 9
+    call                           shift and go to state 10
+    empty                          shift and go to state 11
+    cell_proc                      shift and go to state 12
+    arithmetic_expression          shift and go to state 13
+    type                           shift and go to state 14
+    name                           shift and go to state 15
+
+state 132
+
+    (3) statements_group -> inner_statement .
+
+    NEWLINE         reduce using rule 3 (statements_group -> inner_statement .)
+    RPAREN          reduce using rule 3 (statements_group -> inner_statement .)
+
+
+state 133
+
+    (4) inner_statement -> declaration .
+
+    NEWLINE         reduce using rule 4 (inner_statement -> declaration .)
+    RPAREN          reduce using rule 4 (inner_statement -> declaration .)
+
+
+state 134
+
+    (5) inner_statement -> assignment .
+
+    NEWLINE         reduce using rule 5 (inner_statement -> assignment .)
+    RPAREN          reduce using rule 5 (inner_statement -> assignment .)
+
+
+state 135
+
+    (6) inner_statement -> while .
+
+    NEWLINE         reduce using rule 6 (inner_statement -> while .)
+    RPAREN          reduce using rule 6 (inner_statement -> while .)
+
+
+state 136
+
+    (7) inner_statement -> if .
+
+    NEWLINE         reduce using rule 7 (inner_statement -> if .)
+    RPAREN          reduce using rule 7 (inner_statement -> if .)
+
+
+state 137
+
+    (8) inner_statement -> command .
+    (72) command -> command . error
+
+    NEWLINE         reduce using rule 8 (inner_statement -> command .)
+    RPAREN          reduce using rule 8 (inner_statement -> command .)
+    error           shift and go to state 44
+
+
+state 138
+
+    (9) inner_statement -> procedure .
+
+    NEWLINE         reduce using rule 9 (inner_statement -> procedure .)
+    RPAREN          reduce using rule 9 (inner_statement -> procedure .)
+
+
+state 139
+
+    (10) inner_statement -> call .
+
+    NEWLINE         reduce using rule 10 (inner_statement -> call .)
+    RPAREN          reduce using rule 10 (inner_statement -> call .)
+
+
+state 140
+
+    (11) inner_statement -> empty .
+
+    NEWLINE         reduce using rule 11 (inner_statement -> empty .)
+    RPAREN          reduce using rule 11 (inner_statement -> empty .)
+
+
+state 141
+
+    (12) inner_statement -> cell_proc .
+
+    NEWLINE         reduce using rule 12 (inner_statement -> cell_proc .)
+    RPAREN          reduce using rule 12 (inner_statement -> cell_proc .)
+
+
+state 142
+
+    (13) inner_statement -> arithmetic_expression .
+
+    NEWLINE         reduce using rule 13 (inner_statement -> arithmetic_expression .)
+    RPAREN          reduce using rule 13 (inner_statement -> arithmetic_expression .)
+
+
+state 143
+
+    (70) procedure -> PROC NAME LBR parameters . RBR NEWLINE statements_group
+    (92) parameters -> parameters . name
+    (35) name -> . NAME
+
+    RBR             shift and go to state 155
+    NAME            shift and go to state 52
+
+    name                           shift and go to state 145
+
+state 144
+
+    (78) call -> NAME LBR parameters RBR .
+
+    NEWLINE         reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    NAME            reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    INC             reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    DEC             reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    NUMBER          reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    LT              reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    GT              reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    NOT             reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    OR              reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    TRUE            reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    FALSE           reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    DO              reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    RPAREN          reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    LEFT            reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    RIGHT           reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    BACK            reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    STEP            reduce using rule 78 (call -> NAME LBR parameters RBR .)
+    LOOK            reduce using rule 78 (call -> NAME LBR parameters RBR .)
+
+
+state 145
+
+    (92) parameters -> parameters name .
+
+    RBR             reduce using rule 92 (parameters -> parameters name .)
+    NAME            reduce using rule 92 (parameters -> parameters name .)
+
+
+state 146
+
+    (79) cell_proc -> BAR LBR cell_arg RBR .
+
+    NEWLINE         reduce using rule 79 (cell_proc -> BAR LBR cell_arg RBR .)
+    RPAREN          reduce using rule 79 (cell_proc -> BAR LBR cell_arg RBR .)
+
+
+state 147
+
+    (84) cell_arg -> name name . number number
+    (36) number -> . NUMBER
+
+    NUMBER          shift and go to state 95
+
+    number                         shift and go to state 156
+
+state 148
+
+    (80) cell_proc -> EMP LBR cell_arg RBR .
+
+    NEWLINE         reduce using rule 80 (cell_proc -> EMP LBR cell_arg RBR .)
+    RPAREN          reduce using rule 80 (cell_proc -> EMP LBR cell_arg RBR .)
+
+
+state 149
+
+    (81) cell_proc -> SET LBR cell_arg RBR .
+
+    NEWLINE         reduce using rule 81 (cell_proc -> SET LBR cell_arg RBR .)
+    RPAREN          reduce using rule 81 (cell_proc -> SET LBR cell_arg RBR .)
+
+
+state 150
+
+    (82) cell_proc -> RESET LBR cell_arg RBR .
+
+    NEWLINE         reduce using rule 82 (cell_proc -> RESET LBR cell_arg RBR .)
+    RPAREN          reduce using rule 82 (cell_proc -> RESET LBR cell_arg RBR .)
+
+
+state 151
+
+    (83) cell_proc -> CLR LBR cell_arg RBR .
+
+    NEWLINE         reduce using rule 83 (cell_proc -> CLR LBR cell_arg RBR .)
+    RPAREN          reduce using rule 83 (cell_proc -> CLR LBR cell_arg RBR .)
+
+
+state 152
+
+    (65) while -> WHILE logic_expression DO NEWLINE statements_group .
+
+    NEWLINE         reduce using rule 65 (while -> WHILE logic_expression DO NEWLINE statements_group .)
+    RPAREN          reduce using rule 65 (while -> WHILE logic_expression DO NEWLINE statements_group .)
+
+
+state 153
+
+    (68) if -> IF logic_expression NEWLINE statements_group NEWLINE . ELSE statements_group
+
+    ELSE            shift and go to state 157
+
+
+state 154
+
+    (2) statements_group -> LPAREN statements . inner_statement RPAREN
+    (14) statements -> statements . statement
+    (4) inner_statement -> . declaration
+    (5) inner_statement -> . assignment
+    (6) inner_statement -> . while
+    (7) inner_statement -> . if
+    (8) inner_statement -> . command
+    (9) inner_statement -> . procedure
+    (10) inner_statement -> . call
+    (11) inner_statement -> . empty
+    (12) inner_statement -> . cell_proc
+    (13) inner_statement -> . arithmetic_expression
+    (16) statement -> . declaration NEWLINE
+    (17) statement -> . assignment NEWLINE
+    (18) statement -> . while NEWLINE
+    (19) statement -> . if NEWLINE
+    (20) statement -> . command NEWLINE
+    (21) statement -> . procedure NEWLINE
+    (22) statement -> . call NEWLINE
+    (23) statement -> . empty NEWLINE
+    (24) statement -> . cell_proc NEWLINE
+    (25) statement -> . arithmetic_expression NEWLINE
+    (26) declaration -> . type name EQUALS expression
+    (27) declaration -> . MAP name
+    (28) declaration -> . type error
+    (33) assignment -> . name EQUALS expression
+    (34) assignment -> . name EQUALS error
+    (65) while -> . WHILE logic_expression DO NEWLINE statements_group
+    (66) while -> . DO error
+    (67) while -> . WHILE error
+    (68) if -> . IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+    (69) if -> . IF error
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+    (70) procedure -> . PROC NAME LBR parameters RBR NEWLINE statements_group
+    (71) procedure -> . PROC error
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (91) empty -> .
+    (79) cell_proc -> . BAR LBR cell_arg RBR
+    (80) cell_proc -> . EMP LBR cell_arg RBR
+    (81) cell_proc -> . SET LBR cell_arg RBR
+    (82) cell_proc -> . RESET LBR cell_arg RBR
+    (83) cell_proc -> . CLR LBR cell_arg RBR
+    (85) cell_proc -> . BAR error
+    (86) cell_proc -> . EMP error
+    (87) cell_proc -> . SET error
+    (88) cell_proc -> . RESET error
+    (89) cell_proc -> . CLR error
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (29) type -> . INT
+    (30) type -> . CINT
+    (31) type -> . BOOLEAN
+    (32) type -> . CBOOLEAN
+    (35) name -> . NAME
+
+    MAP             shift and go to state 16
+    WHILE           shift and go to state 17
+    DO              shift and go to state 18
+    IF              shift and go to state 19
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+    PROC            shift and go to state 25
+    NAME            shift and go to state 26
+    NEWLINE         reduce using rule 91 (empty -> .)
+    RPAREN          reduce using rule 91 (empty -> .)
+    BAR             shift and go to state 27
+    EMP             shift and go to state 28
+    SET             shift and go to state 29
+    RESET           shift and go to state 30
+    CLR             shift and go to state 31
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    INT             shift and go to state 34
+    CINT            shift and go to state 35
+    BOOLEAN         shift and go to state 36
+    CBOOLEAN        shift and go to state 37
+
+    inner_statement                shift and go to state 158
+    statement                      shift and go to state 38
+    declaration                    shift and go to state 159
+    assignment                     shift and go to state 160
+    while                          shift and go to state 161
+    if                             shift and go to state 162
+    command                        shift and go to state 163
+    procedure                      shift and go to state 164
+    call                           shift and go to state 165
+    empty                          shift and go to state 166
+    cell_proc                      shift and go to state 167
+    arithmetic_expression          shift and go to state 168
+    type                           shift and go to state 14
+    name                           shift and go to state 15
+
+state 155
+
+    (70) procedure -> PROC NAME LBR parameters RBR . NEWLINE statements_group
+
+    NEWLINE         shift and go to state 169
+
+
+state 156
+
+    (84) cell_arg -> name name number . number
+    (36) number -> . NUMBER
+
+    NUMBER          shift and go to state 95
+
+    number                         shift and go to state 170
+
+state 157
+
+    (68) if -> IF logic_expression NEWLINE statements_group NEWLINE ELSE . statements_group
+    (2) statements_group -> . LPAREN statements inner_statement RPAREN
+    (3) statements_group -> . inner_statement
+    (4) inner_statement -> . declaration
+    (5) inner_statement -> . assignment
+    (6) inner_statement -> . while
+    (7) inner_statement -> . if
+    (8) inner_statement -> . command
+    (9) inner_statement -> . procedure
+    (10) inner_statement -> . call
+    (11) inner_statement -> . empty
+    (12) inner_statement -> . cell_proc
+    (13) inner_statement -> . arithmetic_expression
+    (26) declaration -> . type name EQUALS expression
+    (27) declaration -> . MAP name
+    (28) declaration -> . type error
+    (33) assignment -> . name EQUALS expression
+    (34) assignment -> . name EQUALS error
+    (65) while -> . WHILE logic_expression DO NEWLINE statements_group
+    (66) while -> . DO error
+    (67) while -> . WHILE error
+    (68) if -> . IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+    (69) if -> . IF error
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+    (70) procedure -> . PROC NAME LBR parameters RBR NEWLINE statements_group
+    (71) procedure -> . PROC error
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (91) empty -> .
+    (79) cell_proc -> . BAR LBR cell_arg RBR
+    (80) cell_proc -> . EMP LBR cell_arg RBR
+    (81) cell_proc -> . SET LBR cell_arg RBR
+    (82) cell_proc -> . RESET LBR cell_arg RBR
+    (83) cell_proc -> . CLR LBR cell_arg RBR
+    (85) cell_proc -> . BAR error
+    (86) cell_proc -> . EMP error
+    (87) cell_proc -> . SET error
+    (88) cell_proc -> . RESET error
+    (89) cell_proc -> . CLR error
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (29) type -> . INT
+    (30) type -> . CINT
+    (31) type -> . BOOLEAN
+    (32) type -> . CBOOLEAN
+    (35) name -> . NAME
+
+    LPAREN          shift and go to state 131
+    MAP             shift and go to state 16
+    WHILE           shift and go to state 17
+    DO              shift and go to state 18
+    IF              shift and go to state 19
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+    PROC            shift and go to state 25
+    NAME            shift and go to state 26
+    NEWLINE         reduce using rule 91 (empty -> .)
+    RPAREN          reduce using rule 91 (empty -> .)
+    BAR             shift and go to state 27
+    EMP             shift and go to state 28
+    SET             shift and go to state 29
+    RESET           shift and go to state 30
+    CLR             shift and go to state 31
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    INT             shift and go to state 34
+    CINT            shift and go to state 35
+    BOOLEAN         shift and go to state 36
+    CBOOLEAN        shift and go to state 37
+
+    statements_group               shift and go to state 171
+    inner_statement                shift and go to state 132
+    declaration                    shift and go to state 133
+    assignment                     shift and go to state 134
+    while                          shift and go to state 135
+    if                             shift and go to state 136
+    command                        shift and go to state 137
+    procedure                      shift and go to state 138
+    call                           shift and go to state 139
+    empty                          shift and go to state 140
+    cell_proc                      shift and go to state 141
+    arithmetic_expression          shift and go to state 142
+    type                           shift and go to state 14
+    name                           shift and go to state 15
+
+state 158
+
+    (2) statements_group -> LPAREN statements inner_statement . RPAREN
+
+    RPAREN          shift and go to state 172
+
+
+state 159
+
+    (4) inner_statement -> declaration .
+    (16) statement -> declaration . NEWLINE
+
+    RPAREN          reduce using rule 4 (inner_statement -> declaration .)
+    NEWLINE         shift and go to state 39
+
+
+state 160
+
+    (5) inner_statement -> assignment .
+    (17) statement -> assignment . NEWLINE
+
+    RPAREN          reduce using rule 5 (inner_statement -> assignment .)
+    NEWLINE         shift and go to state 40
+
+
+state 161
+
+    (6) inner_statement -> while .
+    (18) statement -> while . NEWLINE
+
+    RPAREN          reduce using rule 6 (inner_statement -> while .)
+    NEWLINE         shift and go to state 41
+
+
+state 162
+
+    (7) inner_statement -> if .
+    (19) statement -> if . NEWLINE
+
+    RPAREN          reduce using rule 7 (inner_statement -> if .)
+    NEWLINE         shift and go to state 42
+
+
+state 163
+
+    (8) inner_statement -> command .
+    (20) statement -> command . NEWLINE
+    (72) command -> command . error
+
+    RPAREN          reduce using rule 8 (inner_statement -> command .)
+    NEWLINE         shift and go to state 43
+    error           shift and go to state 44
+
+
+state 164
+
+    (9) inner_statement -> procedure .
+    (21) statement -> procedure . NEWLINE
+
+    RPAREN          reduce using rule 9 (inner_statement -> procedure .)
+    NEWLINE         shift and go to state 45
+
+
+state 165
+
+    (10) inner_statement -> call .
+    (22) statement -> call . NEWLINE
+
+    RPAREN          reduce using rule 10 (inner_statement -> call .)
+    NEWLINE         shift and go to state 46
+
+
+state 166
+
+    (11) inner_statement -> empty .
+    (23) statement -> empty . NEWLINE
+
+    RPAREN          reduce using rule 11 (inner_statement -> empty .)
+    NEWLINE         shift and go to state 47
+
+
+state 167
+
+    (12) inner_statement -> cell_proc .
+    (24) statement -> cell_proc . NEWLINE
+
+    RPAREN          reduce using rule 12 (inner_statement -> cell_proc .)
+    NEWLINE         shift and go to state 48
+
+
+state 168
+
+    (13) inner_statement -> arithmetic_expression .
+    (25) statement -> arithmetic_expression . NEWLINE
+
+    RPAREN          reduce using rule 13 (inner_statement -> arithmetic_expression .)
+    NEWLINE         shift and go to state 49
+
+
+state 169
+
+    (70) procedure -> PROC NAME LBR parameters RBR NEWLINE . statements_group
+    (2) statements_group -> . LPAREN statements inner_statement RPAREN
+    (3) statements_group -> . inner_statement
+    (4) inner_statement -> . declaration
+    (5) inner_statement -> . assignment
+    (6) inner_statement -> . while
+    (7) inner_statement -> . if
+    (8) inner_statement -> . command
+    (9) inner_statement -> . procedure
+    (10) inner_statement -> . call
+    (11) inner_statement -> . empty
+    (12) inner_statement -> . cell_proc
+    (13) inner_statement -> . arithmetic_expression
+    (26) declaration -> . type name EQUALS expression
+    (27) declaration -> . MAP name
+    (28) declaration -> . type error
+    (33) assignment -> . name EQUALS expression
+    (34) assignment -> . name EQUALS error
+    (65) while -> . WHILE logic_expression DO NEWLINE statements_group
+    (66) while -> . DO error
+    (67) while -> . WHILE error
+    (68) if -> . IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group
+    (69) if -> . IF error
+    (72) command -> . command error
+    (73) command -> . LEFT
+    (74) command -> . RIGHT
+    (75) command -> . BACK
+    (76) command -> . STEP
+    (77) command -> . LOOK
+    (70) procedure -> . PROC NAME LBR parameters RBR NEWLINE statements_group
+    (71) procedure -> . PROC error
+    (78) call -> . NAME LBR parameters RBR
+    (90) call -> . NAME error
+    (91) empty -> .
+    (79) cell_proc -> . BAR LBR cell_arg RBR
+    (80) cell_proc -> . EMP LBR cell_arg RBR
+    (81) cell_proc -> . SET LBR cell_arg RBR
+    (82) cell_proc -> . RESET LBR cell_arg RBR
+    (83) cell_proc -> . CLR LBR cell_arg RBR
+    (85) cell_proc -> . BAR error
+    (86) cell_proc -> . EMP error
+    (87) cell_proc -> . SET error
+    (88) cell_proc -> . RESET error
+    (89) cell_proc -> . CLR error
+    (50) arithmetic_expression -> . INC first_ar second_ar
+    (51) arithmetic_expression -> . DEC first_ar second_ar
+    (29) type -> . INT
+    (30) type -> . CINT
+    (31) type -> . BOOLEAN
+    (32) type -> . CBOOLEAN
+    (35) name -> . NAME
+
+    LPAREN          shift and go to state 131
+    MAP             shift and go to state 16
+    WHILE           shift and go to state 17
+    DO              shift and go to state 18
+    IF              shift and go to state 19
+    LEFT            shift and go to state 20
+    RIGHT           shift and go to state 21
+    BACK            shift and go to state 22
+    STEP            shift and go to state 23
+    LOOK            shift and go to state 24
+    PROC            shift and go to state 25
+    NAME            shift and go to state 26
+    NEWLINE         reduce using rule 91 (empty -> .)
+    RPAREN          reduce using rule 91 (empty -> .)
+    BAR             shift and go to state 27
+    EMP             shift and go to state 28
+    SET             shift and go to state 29
+    RESET           shift and go to state 30
+    CLR             shift and go to state 31
+    INC             shift and go to state 32
+    DEC             shift and go to state 33
+    INT             shift and go to state 34
+    CINT            shift and go to state 35
+    BOOLEAN         shift and go to state 36
+    CBOOLEAN        shift and go to state 37
+
+    statements_group               shift and go to state 173
+    inner_statement                shift and go to state 132
+    declaration                    shift and go to state 133
+    assignment                     shift and go to state 134
+    while                          shift and go to state 135
+    if                             shift and go to state 136
+    command                        shift and go to state 137
+    procedure                      shift and go to state 138
+    call                           shift and go to state 139
+    empty                          shift and go to state 140
+    cell_proc                      shift and go to state 141
+    arithmetic_expression          shift and go to state 142
+    type                           shift and go to state 14
+    name                           shift and go to state 15
+
+state 170
+
+    (84) cell_arg -> name name number number .
+
+    RBR             reduce using rule 84 (cell_arg -> name name number number .)
+
+
+state 171
+
+    (68) if -> IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group .
+
+    NEWLINE         reduce using rule 68 (if -> IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group .)
+    RPAREN          reduce using rule 68 (if -> IF logic_expression NEWLINE statements_group NEWLINE ELSE statements_group .)
+
+
+state 172
+
+    (2) statements_group -> LPAREN statements inner_statement RPAREN .
+
+    NEWLINE         reduce using rule 2 (statements_group -> LPAREN statements inner_statement RPAREN .)
+    RPAREN          reduce using rule 2 (statements_group -> LPAREN statements inner_statement RPAREN .)
+
+
+state 173
+
+    (70) procedure -> PROC NAME LBR parameters RBR NEWLINE statements_group .
+
+    NEWLINE         reduce using rule 70 (procedure -> PROC NAME LBR parameters RBR NEWLINE statements_group .)
+    RPAREN          reduce using rule 70 (procedure -> PROC NAME LBR parameters RBR NEWLINE statements_group .)
+

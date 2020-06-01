@@ -41,7 +41,7 @@ class lexer(object):
         self.lexer = lex.lex(module=self)
 
     tokens = [
-        'NAME', 'NUMBER', 'EQUALS', 'LPAREN', 'RPAREN', 'INCORRECT', 'NEWLINE'
+        'NAME', 'NUMBER', 'EQUALS', 'LPAREN', 'RPAREN', 'INCORRECT', 'NEWLINE', 'LBR', 'RBR'
     ]
 
     tokens += reserved.values()
@@ -55,6 +55,8 @@ class lexer(object):
     t_EQUALS = r'\:\='
     t_LPAREN = r'\('
     t_RPAREN = r'\)'
+    t_LBR = r'\['
+    t_RBR = r'\]'
 
     t_ignore = " \t"
 
@@ -78,13 +80,12 @@ class lexer(object):
 
     @staticmethod
     def t_INCORRECT(t):
-        r'[^(a-zA-Z0-9\:\=\)\()\+-]'
+        r'[^(a-zA-Z0-9\:\=\)\()\+-\[\]]'
         sys.stderr.write(f'>>> incorrect symbol "{t.value}" at {t.lexer.lineno} line \n')
 
     @staticmethod
     def t_error(t):
         # print("Illegal character '%s'" % t.value[0])
-        sys.stderr.write(f'{t.lexer.lexdata} is incorrect\n')
         t.lexer.skip(1)
 
     def input(self, _data):

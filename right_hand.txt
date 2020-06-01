@@ -1,0 +1,42 @@
+map a
+boolean t := false
+int k := step
+int m := 1
+while gt m -1 do
+    (reset [t a 0 0]
+    right
+    k:=step
+    if lt k false
+        m:=-1
+    else
+
+    if lt k true
+        (left
+        k:=step
+        if lt k false
+             m:=-1
+        else
+
+        if lt k true
+            (left
+            k:=step
+            if lt k false
+                 m:=-1
+            else
+
+            if lt k true
+                (left
+                k:=step
+                if lt k false
+                    m:=-1
+                else
+
+                )
+            else
+            )
+        else
+        )
+    else
+    )
+
+
